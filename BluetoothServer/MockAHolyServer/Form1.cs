@@ -46,7 +46,6 @@ namespace MockAHolyServer
         void bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             listBox1.DataSource = detectedDevices;
-            pb.Visible = false;
             btnFind.Enabled = true;
         }
 
@@ -73,6 +72,8 @@ namespace MockAHolyServer
 
                 // Get a stream object for reading and writing
                 stream = client.GetStream();
+
+                btnSendNumPlayers.BackColor = Color.Green;
                 while (true)
                 {
 
@@ -124,40 +125,6 @@ namespace MockAHolyServer
               = new Guid("{00112233-4455-6677-8899-aabbccddeeff}");
         }
 
-        //private void button_Click(object sender, RoutedEventArgs e)
-        //{
-        //   
-
-        //    string lgphone = "88:30:8A:7E:1A:45"; // The MAC address of my phone, lets assume we know it
-
-        //    BluetoothAddress addr = BluetoothAddress.Parse(lgphone);
-        //    var btEndpoint = new BluetoothEndPoint(addr, MyConsts.MyServiceUuid);
-        //    var btClient = new BluetoothClient();
-        //    btClient.Connect(btEndpoint);
-
-        //    Stream peerStream = btClient.GetStream();
-
-
-        //    StreamReader sr = new StreamReader(peerStream);
-        //    string line;
-        //    // Read and display lines from the file until the end of 
-        //    // the file is reached.
-        //    while ((line = sr.ReadLine()) != null)
-        //    {
-        //        Console.WriteLine(line);
-        //    }
-
-
-        //    StreamWriter sw = new StreamWriter(peerStream);
-        //    sw.WriteLine("Hello World");
-        //    sw.Flush();
-        //    sw.Close();
-
-        //    btClient.Close();
-        //    btClient.Dispose();
-        //    btEndpoint = null;
-        //}
-
         private void Form1_Load(object sender, EventArgs e)
         {
             btnFind_Click(sender, null);
@@ -168,7 +135,6 @@ namespace MockAHolyServer
             if (!bg.IsBusy)
             {
                 btnFind.Enabled = false;
-                pb.Visible = true;
                 bg.RunWorkerAsync();
             }
         }
@@ -247,7 +213,7 @@ namespace MockAHolyServer
                 var numPlayers = from pl in detectedDevices
                                  where pl.PlayerID != -1
                                  select pl;
-               byte[] bytes = BitConverter.GetBytes(numPlayers.Count());
+                byte[] bytes = BitConverter.GetBytes(numPlayers.Count());
                stream.WriteAsync(bytes, 0, bytes.Length);
             }
         }

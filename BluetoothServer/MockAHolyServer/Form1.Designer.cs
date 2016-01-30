@@ -33,7 +33,6 @@
             this.bsDevices = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetDevices = new MockAHolyServer.DataSet();
             this.btnFind = new System.Windows.Forms.Button();
-            this.pb = new System.Windows.Forms.ProgressBar();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnInvite = new System.Windows.Forms.Button();
             this.btnConnection = new System.Windows.Forms.Button();
@@ -72,14 +71,6 @@
             this.btnFind.Text = "Find devices";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // pb
-            // 
-            this.pb.Location = new System.Drawing.Point(202, 214);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(339, 23);
-            this.pb.TabIndex = 2;
-            this.pb.Visible = false;
             // 
             // listBox1
             // 
@@ -128,12 +119,11 @@
             this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.btnInvite);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.pb);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.listBoxDevices);
             this.Name = "Form1";
             this.Text = "Form1";
-             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsDevices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDevices)).EndInit();
             this.ResumeLayout(false);
@@ -146,7 +136,6 @@
         private System.Windows.Forms.BindingSource bsDevices;
         private DataSet dataSetDevices;
         private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.ProgressBar pb;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnInvite;
         private System.Windows.Forms.Button btnConnection;

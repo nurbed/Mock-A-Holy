@@ -6,9 +6,15 @@ public class Santone : MonoBehaviour {
 	[SerializeField] AudioSource m_audioSource;
 	[SerializeField] Animator m_Animator;
 	[SerializeField] AudioClip Drum1;
-	[SerializeField] AudioClip Drum2;
 
-	bool enableInput = false;
+    [SerializeField]
+    AudioClip Good1;
+
+    [SerializeField]
+    AudioClip Good2;
+
+
+    bool enableInput = false;
 	float Timer;
 
 	// Use this for initialization
@@ -20,13 +26,38 @@ public class Santone : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Timer -= 0.005f;
-		if (StaticConf.TURN == 1 && Timer < 0) {
-			Timer =  StaticConf.DELTA_TIME;
-			StartCoroutine (EnableInput());
-		}
+		Timer -= Time.deltaTime;
+        if (Timer < 0)
+        {
+            Timer = StaticConf.DELTA_TIME;
+            StaticConf.TURN++;
+            if (StaticConf.TURN == 1)
+            {
+                if (Random.Range(0, 100) < 50)
+                    m_audioSource.PlayOneShot(Good1);
+                else
+                    m_audioSource.PlayOneShot(Good2);
+            }
+            else
+            {
+                if (StaticConf.TURN == 2)
+                {
+                    StartCoroutine(EnableInput());
+                }
+                else
+                    if (StaticConf.TURN == StaticConf.TURN_REWIND)
+                {
+                    StaticConf.TURN = 0;
+                    StaticConf.TURN_REWIND = Random.Range(3,7);
+                }
+                
+                
+            }
+            m_audioSource.PlayOneShot(Drum1);
 
-		if (Input.GetButtonDown ("Fire1_1")) {
+        }
+
+        if (Input.GetButtonDown ("Fire1_1")) {
 			m_Animator.SetTrigger ("Move0");
 			CheckScore ();
 		}
@@ -47,11 +78,10 @@ public class Santone : MonoBehaviour {
 
 	IEnumerator EnableInput()
 	{
-		m_audioSource.PlayOneShot (Drum1);
 		enableInput = true;
 		yield return new WaitForSeconds(2);
 		enableInput = false;
-		m_audioSource.PlayOneShot (Drum2);
+
 	}
 
 	void CheckScore ()
