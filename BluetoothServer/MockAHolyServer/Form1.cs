@@ -23,7 +23,11 @@ namespace MockAHolyServer
         List<BackgroundWorker> bgComunicate = new List<BackgroundWorker>();
         List<Device> detectedDevices = new List<Device>();
 
+        int currPlayerId = -1;
+
         TcpListener server = null;
+        NetworkStream stream;
+        TcpClient client;
 
         public Form1()
         {
@@ -34,13 +38,14 @@ namespace MockAHolyServer
             bg.DoWork += new DoWorkEventHandler(bg_DoWork);
             bg.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bg_RunWorkerCompleted);
 
+            bgInputServer = new BackgroundWorker();
             bgInputServer.DoWork += new DoWorkEventHandler(bgInput_DoWork);
+            bgInputServer.RunWorkerAsync();
         }
 
         void bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             listBox1.DataSource = detectedDevices;
-            pb.Visible = false;
             btnFind.Enabled = true;
         }
 
@@ -50,7 +55,7 @@ namespace MockAHolyServer
             {
                 // Set the TcpListener on port 13000.
                 Int32 port = 27015;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                IPAddress localAddr = IPAddress.Parse("192.168.0.10");
 
                 // TcpListener server = new TcpListener(port);
                 server = new TcpListener(localAddr, port);
@@ -60,39 +65,31 @@ namespace MockAHolyServer
 
                 // Buffer for reading data
                 Byte[] bytes = new Byte[256];
-                String data = null;
+ 
+                // Perform a blocking call to accept requests.
+                // You could also user server.AcceptSocket() here.
+                client = server.AcceptTcpClient();
 
-                // Enter the listening loop.
+                // Get a stream object for reading and writing
+                stream = client.GetStream();
+
+                btnSendNumPlayers.BackColor = Color.Green;
                 while (true)
                 {
-                    Console.Write("Waiting for a connection... ");
 
-                    // Perform a blocking call to accept requests.
-                    // You could also user server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
-
-                    data = null;
-
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
-
-                    
-
-                    // Shutdown and end connection
-                    client.Close();
                 }
             }
-            catch (SocketException e)
+            catch (SocketException ex)
             {
                 Console.WriteLine("SocketException: {0}", e);
             }
             finally
             {
+                // Shutdown and end connection
+                client.Close();
                 // Stop listening for new clients.
-                
+                server.Stop();
             }
-
         }
 
         void bg_DoWork(object sender, DoWorkEventArgs e)
@@ -118,7 +115,7 @@ namespace MockAHolyServer
         void bgSendApp_DoWork(object sender, DoWorkEventArgs e)
         {
             Device device = (Device)e.Argument;
-            ObexStatusCode response_status = SendModule.SendFile(device.DeviceInfo, Path.GetFullPath("MockAHolyClient.apk"));
+            ObexStatusCode response_status = SendModule.SendFile(device.DeviceInfo, Path.GetFullPath("BluetoothNative.apk"));
             e.Result = (response_status != ObexStatusCode.InternalServerError ? device : null);
         }
 
@@ -127,40 +124,6 @@ namespace MockAHolyServer
             public static readonly Guid MyServiceUuid
               = new Guid("{00112233-4455-6677-8899-aabbccddeeff}");
         }
-
-        //private void button_Click(object sender, RoutedEventArgs e)
-        //{
-        //   
-
-        //    string lgphone = "88:30:8A:7E:1A:45"; // The MAC address of my phone, lets assume we know it
-
-        //    BluetoothAddress addr = BluetoothAddress.Parse(lgphone);
-        //    var btEndpoint = new BluetoothEndPoint(addr, MyConsts.MyServiceUuid);
-        //    var btClient = new BluetoothClient();
-        //    btClient.Connect(btEndpoint);
-
-        //    Stream peerStream = btClient.GetStream();
-
-
-        //    StreamReader sr = new StreamReader(peerStream);
-        //    string line;
-        //    // Read and display lines from the file until the end of 
-        //    // the file is reached.
-        //    while ((line = sr.ReadLine()) != null)
-        //    {
-        //        Console.WriteLine(line);
-        //    }
-
-
-        //    StreamWriter sw = new StreamWriter(peerStream);
-        //    sw.WriteLine("Hello World");
-        //    sw.Flush();
-        //    sw.Close();
-
-        //    btClient.Close();
-        //    btClient.Dispose();
-        //    btEndpoint = null;
-        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -172,7 +135,6 @@ namespace MockAHolyServer
             if (!bg.IsBusy)
             {
                 btnFind.Enabled = false;
-                pb.Visible = true;
                 bg.RunWorkerAsync();
             }
         }
@@ -198,10 +160,14 @@ namespace MockAHolyServer
             //foreach (DataSet.DevicesRow rowDevice in dataSetDevices.Devices.Rows)
             {
                 Device device = (Device)listBox1.SelectedItem;
-                bgComunicate.Add(new BackgroundWorker());
+                if (device.PlayerID == -1)
+                {
+                    device.PlayerID = ++currPlayerId;
+                    bgComunicate.Add(new BackgroundWorker());
 
-                bgComunicate.Last().DoWork += new DoWorkEventHandler(bgCominucate_DoWork);
-                bgComunicate.Last().RunWorkerAsync(device.DeviceInfo);
+                    bgComunicate.Last().DoWork += new DoWorkEventHandler(bgCominucate_DoWork);
+                    bgComunicate.Last().RunWorkerAsync(device);
+                }
             }
         }
 
@@ -211,7 +177,7 @@ namespace MockAHolyServer
             {
                 try
                 {
-                    var ep = new BluetoothEndPoint((BluetoothAddress)e.Argument, MyConsts.MyServiceUuid);
+                    var ep = new BluetoothEndPoint(((Device)e.Argument).DeviceInfo, MyConsts.MyServiceUuid);
 
                     // connecting  
                     bluetoothClient.Connect(ep);
@@ -225,7 +191,11 @@ namespace MockAHolyServer
                     while (true)//(line = sr.ReadLine()) != null)
                     {
                         line = sr.Read();
-                        Console.WriteLine(line);
+                        if (line != -1)
+                        {
+                            stream.WriteAsync(BitConverter.GetBytes(((Device)e.Argument).PlayerID), 0, 4);
+                            stream.WriteAsync(BitConverter.GetBytes(line), 0, 4);
+                        }
                     }
                 }
                 catch
@@ -236,9 +206,16 @@ namespace MockAHolyServer
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnSendNumPlayers_Click(object sender, EventArgs e)
         {
-            server.Stop();
+            if(stream != null)
+            {
+                var numPlayers = from pl in detectedDevices
+                                 where pl.PlayerID != -1
+                                 select pl;
+                byte[] bytes = BitConverter.GetBytes(numPlayers.Count());
+               stream.WriteAsync(bytes, 0, bytes.Length);
+            }
         }
     }
 }

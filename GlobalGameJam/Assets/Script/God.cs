@@ -3,10 +3,11 @@ using System.Collections;
 
 public class God : MonoBehaviour {
 
-	bool enableInput = false;
 
-	// Use this for initialization
-	void Start () {
+    bool enableInput = false;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -14,7 +15,7 @@ public class God : MonoBehaviour {
 	void Update () {
 		if (StaticConf.TURN == 0) {
 			StartCoroutine (EnableInput());
-		}
+        }
 	}
 
 	IEnumerator EnableInput()
@@ -22,6 +23,5 @@ public class God : MonoBehaviour {
 		enableInput = true;
 		yield return new WaitForSeconds(2);
 		enableInput = false;
-		StaticConf.TURN = 1;
 	}
 }
