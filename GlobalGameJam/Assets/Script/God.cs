@@ -3,7 +3,7 @@ using System.Collections;
 
 public class God : MonoBehaviour {
 
-	bool enableInput=false;
+	bool enableInput = false;
 
 	// Use this for initialization
 	void Start () {

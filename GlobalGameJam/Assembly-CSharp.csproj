@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Santone.cs" />
+     <Compile Include="Assets\Script\AllPlayers.cs" />
      <Compile Include="Assets\Script\Bluetooth\BluetoothManager.cs" />
      <Compile Include="Assets\Script\Bluetooth\TCPConnection.cs" />
      <Compile Include="Assets\Script\God.cs" />

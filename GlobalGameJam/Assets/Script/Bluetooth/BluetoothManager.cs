@@ -6,10 +6,15 @@ using System;
 
 public class BluetoothManager : MonoBehaviour
 {
+	public System.Action<int> OnDevicePaired;
+	public System.Action<int, int> OnDeviceEvent;
+
 	[SerializeField] TCPConnection m_tcpConnection;
 	[SerializeField] string m_msgToServer;
+
+	System.Action UpdateInternal;
 		
-    void Start()
+    void Awake()
     {
 		enabled = false;
 		m_tcpConnection.OnSocketSetuped += EnableScript;
@@ -18,41 +23,52 @@ public class BluetoothManager : MonoBehaviour
 		if (m_tcpConnection.socketReady == false)
 		{
 			m_tcpConnection.setupSocket();
-			/*if (GUILayout.Button("Connect"))
-			{
-				//try to connect
-				Debug.Log("Attempting to connect..");
-			}*/
 			Debug.Log("Attempting to connect..");
 		}
 
 		//once connection has been made, display editable text field with a button to send that string to the server (see function below)
 		if (m_tcpConnection.socketReady == true)
 		{
-			m_msgToServer = GUILayout.TextField(m_msgToServer);
-
-			/*if (GUILayout.Button("Write to server", GUILayout.Height(30)))
-			{
-				SendToServer(m_msgToServer);
-			}*/
 			SendToServer(m_msgToServer);
 		}
+
+		UpdateInternal = SocketResponseAtStart;
 	}
 
 	void Update()
     {
         //keep checking the server for messages, if a message is received from server, it gets logged in the Debug console (see function below)
-        SocketResponse();
+		UpdateInternal();
     }
+
+	//socket reading script at start
+	void SocketResponseAtStart()
+	{
+		int devicePaired = m_tcpConnection.readSocketAtStart();	//num of device paired
+		if (devicePaired != -1)
+		{
+			if (OnDevicePaired != null)
+				OnDevicePaired(devicePaired);
+
+			Debug.Log("[SERVER] say: " + devicePaired);
+			UpdateInternal = SocketResponse;
+		}
+	}
 
 	//socket reading script
     void SocketResponse()
     {
-        string serverSays = m_tcpConnection.readSocket();
+		int playerId = -1;
+		int animationId = -1;
 
-        if (serverSays != "")
+		m_tcpConnection.readSocket(out playerId, out animationId);
+
+		if (playerId != -1)
         {
-            Debug.Log("[SERVER]" + serverSays);
+			if (OnDeviceEvent != null)
+				OnDeviceEvent(playerId, animationId);
+
+			Debug.Log("[SERVER] PlayerID: " + playerId + " - AnimationID: " + animationId);
         }
     }
 

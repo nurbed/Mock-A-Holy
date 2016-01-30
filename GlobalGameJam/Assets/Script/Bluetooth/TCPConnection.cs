@@ -48,18 +48,35 @@ public class TCPConnection : MonoBehaviour
         theWriter.Flush();
     }
 
-    //read message from server
-    public string readSocket()
+    //read message from server only at start
+    public int readSocketAtStart()
     {
-        String result = "";
+        int result = -1;		//num of paired players
+
         if (theStream.DataAvailable)
         {
             Byte[] inStream = new Byte[mySocket.SendBufferSize];
             theStream.Read(inStream, 0, inStream.Length);
-            result += System.Text.Encoding.UTF8.GetString(inStream);
+			result = BitConverter.ToInt32(inStream, 0);
         }
         return result;
     }
+
+	//read message from server
+	public void readSocket(out int playerId, out int animationId)
+	{
+		playerId = -1;
+		animationId = -1;
+
+		if (theStream.DataAvailable)
+		{
+			Byte[] inStream = new Byte[mySocket.SendBufferSize];
+			theStream.Read(inStream, 0, inStream.Length);
+			playerId = BitConverter.ToInt32(inStream, 0);
+			theStream.Read(inStream, 0, inStream.Length);
+			animationId = BitConverter.ToInt32(inStream, 0);
+		}
+	}
 
     //disconnect from the socket
     public void closeSocket()
