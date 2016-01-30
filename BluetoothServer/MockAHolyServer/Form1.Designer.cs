@@ -37,6 +37,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnInvite = new System.Windows.Forms.Button();
             this.btnConnection = new System.Windows.Forms.Button();
+            this.btnSendNumPlayers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bsDevices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDevices)).BeginInit();
             this.SuspendLayout();
@@ -108,11 +109,22 @@
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnConnection_Click);
             // 
+            // btnSendNumPlayers
+            // 
+            this.btnSendNumPlayers.Location = new System.Drawing.Point(202, 164);
+            this.btnSendNumPlayers.Name = "btnSendNumPlayers";
+            this.btnSendNumPlayers.Size = new System.Drawing.Size(339, 23);
+            this.btnSendNumPlayers.TabIndex = 6;
+            this.btnSendNumPlayers.Text = "Send num palyer and start";
+            this.btnSendNumPlayers.UseVisualStyleBackColor = true;
+            this.btnSendNumPlayers.Click += new System.EventHandler(this.btnSendNumPlayers_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 261);
+            this.Controls.Add(this.btnSendNumPlayers);
             this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.btnInvite);
             this.Controls.Add(this.listBox1);
@@ -121,8 +133,7 @@
             this.Controls.Add(this.listBoxDevices);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsDevices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDevices)).EndInit();
             this.ResumeLayout(false);
@@ -139,6 +150,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnInvite;
         private System.Windows.Forms.Button btnConnection;
+        private System.Windows.Forms.Button btnSendNumPlayers;
     }
 }
 

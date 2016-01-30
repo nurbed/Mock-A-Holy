@@ -19,6 +19,8 @@ namespace MockAHolyServer
         public DateTime LastUsed { get; set; }
         public bool Remembered { get; set; }
 
+        public int PlayerID { get; set; }
+
         public Device(BluetoothDeviceInfo device_info)
         {
             this.Authenticated = device_info.Authenticated;
@@ -30,6 +32,7 @@ namespace MockAHolyServer
             this.Nap = device_info.DeviceAddress.Nap;
             this.Sap = device_info.DeviceAddress.Sap;
             this.Remembered = device_info.Remembered;
+            this.PlayerID = -1;
         }
 
         public override string ToString()
