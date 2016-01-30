@@ -11,13 +11,11 @@ public class Santone : MonoBehaviour {
 	bool enableInput = false;
 	float Timer;
 
-	// Use this for initialization
 	void Start () {
 		m_audioSource.Play ();
 		Timer = StaticConf.DELTA_TIME;
 	}
-	
-	// Update is called once per frame
+
 	void Update () 
 	{
 		Timer -= 0.005f;
@@ -42,7 +40,6 @@ public class Santone : MonoBehaviour {
 			m_Animator.SetTrigger ("Move2Flipped");
 			CheckScore ();
 		}
-		
 	}
 
 	IEnumerator EnableInput()
@@ -61,5 +58,4 @@ public class Santone : MonoBehaviour {
 		else
 			StaticConf.SCORE -= 5;
 	}
-
 }

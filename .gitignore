@@ -32,4 +32,7 @@ captures/
 BluetoothServer/.vs/MockAHolyServer/v14/.suo
 BluetoothServer/MockAHolyServer/obj/
 BluetoothServer/packages/
+
+#unity
 GlobalGameJam/Library/
+GlobalGameJam/Temp/
