@@ -3,47 +3,63 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField] InputManager m_oInputManager;
+	public int id;
+	public int Input = -1;
+	public bool isRealPlayer;
+	Animator m_Animator;
+	bool enableInput= false;
 
 	// Use this for initialization
 	void Start () {
-		m_oInputManager.OnSlideToRight += SLideRight;
-		m_oInputManager.OnSlideToLeft += SLideLeft;
-
-		m_oInputManager.OnSlideToBottom += SLideBottom;
-
-		m_oInputManager.OnSlideToTop += SLideTOp;
-		m_oInputManager.OnSingleClick += Click;
-		m_oInputManager.OnCLickContinuos += ClickContinuos;
-	
+		id = this.transform.GetSiblingIndex ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (StaticConf.TURN == 2) {
+			enableInput = true;
+			StartCoroutine (EnableInput ());
+		}
+
+		if (Input == 0) {
+			m_Animator.SetTrigger ("Move5");
+			CheckScore ();
+			Input = -1;
+		}
+		if (Input == 1) {
+			m_Animator.SetTrigger ("Move1");
+			CheckScore ();
+			Input = -1;
+		}
+		if (Input == 2) {
+			m_Animator.SetTrigger ("Move1Flipped");
+			CheckScore ();
+			Input = -1;
+		}
+		if (Input == 3) {
+			m_Animator.SetTrigger ("Move2");
+			CheckScore ();
+			Input = -1;
+		}
+		if (Input == 4) {
+			m_Animator.SetTrigger ("Move2Flipped");
+			CheckScore ();
+			Input = -1;
+		}
 	}
 
-	void SLideRight ()
+	IEnumerator EnableInput()
 	{
-		Debug.Log ("SLIDERIGHT");
+		yield return new WaitForSeconds (3);
+		enabled = false;
 	}
-	void SLideLeft ()
+
+	void CheckScore()
 	{
-		Debug.Log ("SLIDELEFT");
+		if (StaticConf.TURN == 2 && enableInput == true)
+			StaticConf.SCORE += 5;
+		else
+			StaticConf.SCORE -= 5;
 	}
-	void SLideBottom ()
-	{
-		Debug.Log ("SLIDEBOTTOM");
-	}
-	void SLideTOp ()
-	{
-		Debug.Log ("SLIDETOP");
-	}
-	void Click ()
-	{
-		Debug.Log ("TOP");
-	}
-	void ClickContinuos ()
-	{
-		Debug.Log ("CLICKCONTINUOS");
-	}
+		
 }
