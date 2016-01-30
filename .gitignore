@@ -30,3 +30,6 @@ proguard/
 
 # Android Studio captures folder
 captures/
+BluetoothServer/.vs/MockAHolyServer/v14/.suo
+BluetoothServer/MockAHolyServer/obj/
+BluetoothServer/packages/
