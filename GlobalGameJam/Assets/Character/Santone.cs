@@ -13,6 +13,12 @@ public class Santone : MonoBehaviour {
     [SerializeField]
     AudioClip Good2;
 
+    [SerializeField]
+    AudioClip Sant1;
+
+    [SerializeField]
+    AudioClip Sant2;
+
 
     bool enableInput = false;
 	float Timer;
@@ -55,28 +61,36 @@ public class Santone : MonoBehaviour {
 
         }
 
-        float firstAxisValue = Input.GetAxis("FirstVertical");
-        float secondAxisValue = Input.GetAxis("SecondVertical");
-        if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER) {
-			m_Animator.SetTrigger ("Move0");
-			CheckScore ();
-		}
-        else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
-		{
-			m_Animator.SetTrigger ("Move1");
-			CheckScore ();
-		}
+        if (!m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName(StaticConf.IdleState))
+        {
+            float firstAxisValue = Input.GetAxis("FirstVertical");
+            float secondAxisValue = Input.GetAxis("SecondVertical");
+            if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
+            {
+                m_Animator.SetTrigger("Move0");
+                m_audioSource.PlayOneShot(Sant1);
+                CheckScore();
+            }
+            else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
+            {
+                m_Animator.SetTrigger("Move1");
+                m_audioSource.PlayOneShot(Sant2);
+                CheckScore();
+            }
 
-        firstAxisValue = Input.GetAxis("FirstHorizontal");
-        secondAxisValue = Input.GetAxis("SecondHorizontal");
-        if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER) {
-			m_Animator.SetTrigger ("Move2");
-			CheckScore ();
-		}
-        else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER) {
-			m_Animator.SetTrigger ("Move2Flipped");
-			CheckScore ();
-		}
+            firstAxisValue = Input.GetAxis("FirstHorizontal");
+            secondAxisValue = Input.GetAxis("SecondHorizontal");
+            if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
+            {
+                m_Animator.SetTrigger("Move2");
+                CheckScore();
+            }
+            else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
+            {
+                m_Animator.SetTrigger("Move2Flipped");
+                CheckScore();
+            }
+        }
 	}
 
 	IEnumerator EnableInput()

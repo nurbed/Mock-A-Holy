@@ -12,6 +12,7 @@ public static class StaticConf
 
     public static float ANALOGIC_TRIGGER = 0.6f;
 
+    public const string IdleState = "Idle";
 
     public const string AdeptiTag = "Adepti";
 }
