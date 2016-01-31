@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Santone : MonoBehaviour {
 
 	[SerializeField] AudioSource m_audioSource;
 	[SerializeField] Animator m_Animator;
-	[SerializeField] AudioClip Drum1;
-
-    [SerializeField]
-    AudioClip Good1;
-
-    [SerializeField]
-    AudioClip Good2;
 
     [SerializeField]
     AudioClip Sant1;
@@ -19,14 +13,14 @@ public class Santone : MonoBehaviour {
     [SerializeField]
     AudioClip Sant2;
 
-
-    bool enableInput = false;
 	float Timer;
+    int TURN = 0;
 
-	void Start () {
-		m_audioSource.Play ();
+    private int m_animationId = -1;
+
+    void Start () {
 		Timer = StaticConf.DELTA_TIME;
-	}
+    }
 
 	void Update () 
 	{
@@ -34,31 +28,14 @@ public class Santone : MonoBehaviour {
         if (Timer < 0)
         {
             Timer = StaticConf.DELTA_TIME;
-            StaticConf.TURN++;
-            if (StaticConf.TURN == 1)
+            if (TURN == 2)
             {
-                if (Random.Range(0, 100) < 50)
-                    m_audioSource.PlayOneShot(Good1);
-                else
-                    m_audioSource.PlayOneShot(Good2);
+                TURN = 0;
             }
             else
             {
-                if (StaticConf.TURN == 2)
-                {
-                    StartCoroutine(EnableInput());
-                }
-                else
-                    if (StaticConf.TURN == StaticConf.TURN_REWIND)
-                {
-                    StaticConf.TURN = 0;
-                    StaticConf.TURN_REWIND = Random.Range(3,3);
-                }
-                
-                
+                TURN++;
             }
-            m_audioSource.PlayOneShot(Drum1);
-
         }
 
         if (!m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName(StaticConf.IdleState))
@@ -67,45 +44,58 @@ public class Santone : MonoBehaviour {
             float secondAxisValue = Input.GetAxis("SecondVertical");
             if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move0");
+                m_animationId = 1;
                 m_audioSource.PlayOneShot(Sant1);
-                CheckScore();
             }
             else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move1");
+                m_animationId = 2;
                 m_audioSource.PlayOneShot(Sant2);
-                CheckScore();
             }
 
             firstAxisValue = Input.GetAxis("FirstHorizontal");
             secondAxisValue = Input.GetAxis("SecondHorizontal");
             if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move2");
-                CheckScore();
+                m_animationId = 3;
             }
             else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move2Flipped");
+                m_animationId = 4;
+            }
+
+            if (m_animationId != -1)
+            {
                 CheckScore();
+                switch (m_animationId)
+                {
+                    case 1:
+                        m_Animator.SetTrigger("Move0");
+                        break;
+                    case 2:
+                        m_Animator.SetTrigger("Move1");
+                        break;
+                    case 3:
+                        m_Animator.SetTrigger("Move2");
+                        break;
+                    case 4:
+                        m_Animator.SetTrigger("Move2Flipped");
+                        break;
+                }
+                m_animationId = -1;
             }
         }
 	}
 
-	IEnumerator EnableInput()
-	{
-		enableInput = true;
-		yield return new WaitForSeconds(2);
-		enableInput = false;
-
-	}
-
 	void CheckScore ()
-	{
-		if (StaticConf.TURN == 1)
-			StaticConf.SCORE += 5;
-		else
-			StaticConf.SCORE -= 5;
-	}
+    {
+        // Verifico se sono nella giusta condizione del timer
+        if (m_animationId == StaticConf.RIGHT_MOVE && (TURN == 2 && Timer > StaticConf.DELTA_TIME - StaticConf.RANGE_TIME ||
+            TURN == 1 && Timer < StaticConf.RANGE_TIME))
+        {
+            StaticConf.SCORE += StaticConf.SANT_OK;
+        }
+        else
+            StaticConf.SCORE += StaticConf.SANT_KO;
+    }
 }
