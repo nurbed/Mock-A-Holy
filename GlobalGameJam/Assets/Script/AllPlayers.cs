@@ -38,6 +38,9 @@ public class AllPlayers : MonoBehaviour
 	{
 		int randomId;
 
+        StaticConf.PLAY_KO = StaticConf.SANT_KO / numOfPlayers;
+        StaticConf.PLAY_OK = StaticConf.SANT_OK / numOfPlayers;
+
 		for (int i=0; i<numOfPlayers; ++i)
 		{
 			randomId = Random.Range(0, numOfPlayers-1);	

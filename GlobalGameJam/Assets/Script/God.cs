@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class God : MonoBehaviour {
@@ -16,6 +17,7 @@ public class God : MonoBehaviour {
 
     float Timer;
     int TURN = 0;
+    [SerializeField] Slider ScoreSlider;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,10 @@ public class God : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (StaticConf.SCORE < 0)
+            StaticConf.SCORE = 0;
+        ScoreSlider.value = StaticConf.SCORE;
+
         Timer -= Time.deltaTime;
         if (Timer < 0)
         {

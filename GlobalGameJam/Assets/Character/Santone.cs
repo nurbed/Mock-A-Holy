@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Santone : MonoBehaviour {
@@ -12,14 +13,14 @@ public class Santone : MonoBehaviour {
     [SerializeField]
     AudioClip Sant2;
 
-
-    bool enableInput = false;
 	float Timer;
     int TURN = 0;
 
+    private int m_animationId = -1;
+
     void Start () {
 		Timer = StaticConf.DELTA_TIME;
-	}
+    }
 
 	void Update () 
 	{
@@ -43,45 +44,58 @@ public class Santone : MonoBehaviour {
             float secondAxisValue = Input.GetAxis("SecondVertical");
             if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move0");
+                m_animationId = 1;
                 m_audioSource.PlayOneShot(Sant1);
-                CheckScore();
             }
             else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move1");
+                m_animationId = 2;
                 m_audioSource.PlayOneShot(Sant2);
-                CheckScore();
             }
 
             firstAxisValue = Input.GetAxis("FirstHorizontal");
             secondAxisValue = Input.GetAxis("SecondHorizontal");
             if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move2");
-                CheckScore();
+                m_animationId = 3;
             }
             else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
             {
-                m_Animator.SetTrigger("Move2Flipped");
+                m_animationId = 4;
+            }
+
+            if (m_animationId != -1)
+            {
                 CheckScore();
+                switch (m_animationId)
+                {
+                    case 1:
+                        m_Animator.SetTrigger("Move0");
+                        break;
+                    case 2:
+                        m_Animator.SetTrigger("Move1");
+                        break;
+                    case 3:
+                        m_Animator.SetTrigger("Move2");
+                        break;
+                    case 4:
+                        m_Animator.SetTrigger("Move2Flipped");
+                        break;
+                }
+                m_animationId = -1;
             }
         }
 	}
 
-	IEnumerator EnableInput()
-	{
-		enableInput = true;
-		yield return new WaitForSeconds(2);
-		enableInput = false;
-
-	}
-
 	void CheckScore ()
-	{
-		if (TURN == 1)
-			StaticConf.SCORE += 5;
-		else
-			StaticConf.SCORE -= 5;
-	}
+    {
+        // Verifico se sono nella giusta condizione del timer
+        if (m_animationId == StaticConf.RIGHT_MOVE && (TURN == 2 && Timer > StaticConf.DELTA_TIME - StaticConf.RANGE_TIME ||
+            TURN == 1 && Timer < StaticConf.RANGE_TIME))
+        {
+            StaticConf.SCORE += StaticConf.SANT_OK;
+        }
+        else
+            StaticConf.SCORE += StaticConf.SANT_KO;
+    }
 }
