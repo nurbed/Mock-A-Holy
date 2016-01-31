@@ -61,6 +61,7 @@
      <Compile Include="Assets\Script\InputManager\Input\InputPlayer\InputPlayerTouchContinuous\InputPlayerTouchContinuous.cs" />
      <Compile Include="Assets\Script\InputManager\Input\InputReplay\InputReplay.cs" />
      <Compile Include="Assets\Script\InputManager\InputManager.cs" />
+     <Compile Include="Assets\Script\MenuListener\MenuListener.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\StaticConf.cs" />
      <Compile Include="Assets\Script\Utils\VectorUtils.cs" />

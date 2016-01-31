@@ -2,8 +2,7 @@ package com.ggj.codeplease.bluetoothnative;
 
 import java.util.ArrayList;
 
-import android.graphics.Color;
-import android.os.Vibrator;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup.LayoutParams;
 import android.os.Bundle;
@@ -25,9 +24,6 @@ public class GestureActivity extends AppCompatActivity
     private ViewFlipper flipper = null;
     private ArrayList<TextView> views = null;
     private GestureDetector gesturedetector = null;
-    private Vibrator vibrator = null;
-    int colors[] = { Color.rgb(255, 128, 128), Color.rgb(128,255,128),
-            Color.rgb(128,128,255), Color.rgb(128,128,128) };
 
     private Animation animleftin = null;
     private Animation animleftout = null;
@@ -50,7 +46,6 @@ public class GestureActivity extends AppCompatActivity
 
         flipper = new ViewFlipper(this);
         gesturedetector = new GestureDetector(this, this);
-        vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
         gesturedetector.setOnDoubleTapListener(this);
 
         flipper.setInAnimation(animleftin);
@@ -61,7 +56,6 @@ public class GestureActivity extends AppCompatActivity
         prepareAnimations();
         prepareViews();
         addViews();
-        setViewText();
 
         NativeBluetooth.Initialize();
 
@@ -127,12 +121,11 @@ public class GestureActivity extends AppCompatActivity
 
         views = new ArrayList<TextView>();
 
-        for(int color: colors)
+        for (int i=0; i<4; ++i)
         {
             view = new TextView(this);
 
-            view.setBackgroundColor(color);
-            view.setTextColor(Color.BLACK);
+            view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.runa_telefono));
             view.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
             views.add(view);
@@ -142,16 +135,8 @@ public class GestureActivity extends AppCompatActivity
     private void addViews(){
         for(int index=0; index<views.size(); ++index)
         {
-            flipper.addView(views.get(index),index,
+            flipper.addView(views.get(index), index,
                     new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-        }
-    }
-
-    private void setViewText(){
-        String text = getString(isDragMode ? R.string.app_info_drag : R.string.app_info_flip);
-        for(int index=0; index<views.size(); ++index)
-        {
-            views.get(index).setText(text);
         }
     }
 
@@ -249,12 +234,9 @@ public class GestureActivity extends AppCompatActivity
 
     @Override
     public void onLongPress(MotionEvent e) {
-        //vibrator.vibrate(200);
         flipper.scrollTo(0,0);
 
         isDragMode = !isDragMode;
-
-        setViewText();
     }
 
     @Override

@@ -1,23 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\StaticConf.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\MenuListener\MenuListener.cs">
     <Files>
-      <File FileName="Assets\Script\Bluetooth\BluetoothManager.cs" Line="64" Column="19" />
-      <File FileName="Assets\Script\Bluetooth\TCPConnection.cs" Line="68" Column="17" />
-      <File FileName="Assets\Script\AllPlayers.cs" Line="10" Column="2" />
-      <File FileName="Assets\Script\Player.cs" Line="6" Column="2" />
-      <File FileName="Assets\Script\StaticConf.cs" Line="14" Column="1" />
+      <File FileName="Assets\Script\MenuListener\MenuListener.cs" Line="27" Column="50" />
+      <File FileName="Assets\Script\Bluetooth\BluetoothManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Bluetooth\TCPConnection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\AllPlayers.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\StaticConf.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>serverSays</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="D:\Mattia\Master\SourceTree\MockAHoly\GlobalGameJam\Assets\Script\AllPlayers.cs" line="53" column="1" />
+      <Breakpoint file="D:\Mattia\Master\SourceTree\MockAHoly\GlobalGameJam\Assets\Script\AllPlayers.cs" line="39" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
