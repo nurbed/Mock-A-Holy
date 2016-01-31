@@ -1,16 +1,10 @@
 <resources>
+    <string name="title_activity_gesture">Moke-A-Holy</string>
     <string name="app_name">BluetoothNative</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="Text">Bluetooth Disconnected</string>
     <string name="TurnOnBluetooth">Turn On</string>
     <string name="TurnOffBluetooth">Turn Off</string>
     <string name="ListKnownDevices">List known devices</string>
     <string name="FindNearDevices">Find near devices</string>
     <string name="title_activity_native_bluetooth">NativeBluetooth</string>
-    <string name="title_activity_gesture">GestureActivity</string>
-
-    <string name="app_info_drag">GestureDetector sample.\n\nCurrent Mode: SCROLL\n\nDrag the view using finger.\nLong press to change the mode to SWIPE.\nDouble tap to reposition the view to normal.</string>
-    <string name="app_info_flip">GestureDetector sample.\n\nCurrent Mode: FLIP\n\nSwipe left, right, up, down to change the views\nLong press to change to mode to SCROLL</string>
 </resources>
