@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuListener : MonoBehaviour {
 
@@ -29,7 +30,7 @@ public class MenuListener : MonoBehaviour {
 
 	void OnStartGame()
 	{
-		Application.LoadLevel("1");
+		SceneManager.LoadScene("1");
 	}
 
 	void OnCreditsButton()
@@ -39,7 +40,7 @@ public class MenuListener : MonoBehaviour {
 
 	void OnCloseGame()
 	{
-		Application.CancelQuit();
+		Application.Quit();
 	}
 
 	void OnCloseCredits()
