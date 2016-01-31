@@ -5,13 +5,6 @@ public class Santone : MonoBehaviour {
 
 	[SerializeField] AudioSource m_audioSource;
 	[SerializeField] Animator m_Animator;
-	[SerializeField] AudioClip Drum1;
-
-    [SerializeField]
-    AudioClip Good1;
-
-    [SerializeField]
-    AudioClip Good2;
 
     [SerializeField]
     AudioClip Sant1;
@@ -22,9 +15,9 @@ public class Santone : MonoBehaviour {
 
     bool enableInput = false;
 	float Timer;
+    int TURN = 0;
 
-	void Start () {
-		m_audioSource.Play ();
+    void Start () {
 		Timer = StaticConf.DELTA_TIME;
 	}
 
@@ -34,31 +27,14 @@ public class Santone : MonoBehaviour {
         if (Timer < 0)
         {
             Timer = StaticConf.DELTA_TIME;
-            StaticConf.TURN++;
-            if (StaticConf.TURN == 1)
+            if (TURN == 2)
             {
-                if (Random.Range(0, 100) < 50)
-                    m_audioSource.PlayOneShot(Good1);
-                else
-                    m_audioSource.PlayOneShot(Good2);
+                TURN = 0;
             }
             else
             {
-                if (StaticConf.TURN == 2)
-                {
-                    StartCoroutine(EnableInput());
-                }
-                else
-                    if (StaticConf.TURN == StaticConf.TURN_REWIND)
-                {
-                    StaticConf.TURN = 0;
-                    StaticConf.TURN_REWIND = Random.Range(3,3);
-                }
-                
-                
+                TURN++;
             }
-            m_audioSource.PlayOneShot(Drum1);
-
         }
 
         if (!m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName(StaticConf.IdleState))
@@ -103,7 +79,7 @@ public class Santone : MonoBehaviour {
 
 	void CheckScore ()
 	{
-		if (StaticConf.TURN == 1)
+		if (TURN == 1)
 			StaticConf.SCORE += 5;
 		else
 			StaticConf.SCORE -= 5;

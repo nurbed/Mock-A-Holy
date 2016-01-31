@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listBoxDevices = new System.Windows.Forms.ListBox();
             this.bsDevices = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetDevices = new MockAHolyServer.DataSet();
             this.btnFind = new System.Windows.Forms.Button();
@@ -40,17 +39,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsDevices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDevices)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listBoxDevices
-            // 
-            this.listBoxDevices.DataSource = this.bsDevices;
-            this.listBoxDevices.DisplayMember = "DeviceName";
-            this.listBoxDevices.FormattingEnabled = true;
-            this.listBoxDevices.Location = new System.Drawing.Point(547, 12);
-            this.listBoxDevices.Name = "listBoxDevices";
-            this.listBoxDevices.Size = new System.Drawing.Size(155, 225);
-            this.listBoxDevices.TabIndex = 0;
-            this.listBoxDevices.ValueMember = "DeviceAddress";
             // 
             // bsDevices
             // 
@@ -92,17 +80,17 @@
             // 
             // btnConnection
             // 
-            this.btnConnection.Location = new System.Drawing.Point(202, 123);
+            this.btnConnection.Location = new System.Drawing.Point(202, 111);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(339, 23);
             this.btnConnection.TabIndex = 5;
-            this.btnConnection.Text = "Start connection";
+            this.btnConnection.Text = "Start connection to selected device";
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnConnection_Click);
             // 
             // btnSendNumPlayers
             // 
-            this.btnSendNumPlayers.Location = new System.Drawing.Point(202, 164);
+            this.btnSendNumPlayers.Location = new System.Drawing.Point(202, 214);
             this.btnSendNumPlayers.Name = "btnSendNumPlayers";
             this.btnSendNumPlayers.Size = new System.Drawing.Size(339, 23);
             this.btnSendNumPlayers.TabIndex = 6;
@@ -114,15 +102,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 261);
+            this.ClientSize = new System.Drawing.Size(553, 246);
             this.Controls.Add(this.btnSendNumPlayers);
             this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.btnInvite);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnFind);
-            this.Controls.Add(this.listBoxDevices);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mock-A-Holy Bluetooth pass-through to Unity";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsDevices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDevices)).EndInit();
@@ -131,8 +118,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxDevices;
         private System.Windows.Forms.BindingSource bsDevices;
         private DataSet dataSetDevices;
         private System.Windows.Forms.Button btnFind;
