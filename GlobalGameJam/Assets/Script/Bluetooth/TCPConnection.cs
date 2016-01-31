@@ -70,7 +70,7 @@ public class TCPConnection : MonoBehaviour
 
 		if (theStream.DataAvailable)
 		{
-			Byte[] inStream = new Byte[mySocket.SendBufferSize];
+			Byte[] inStream = new Byte[StaticConf.STREAM_BYTE];
 			theStream.Read(inStream, 0, inStream.Length);
 			playerId = BitConverter.ToInt32(inStream, 0);
 			theStream.Read(inStream, 0, inStream.Length);

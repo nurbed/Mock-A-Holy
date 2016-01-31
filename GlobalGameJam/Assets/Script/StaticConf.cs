@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class StaticConf {
+public static class StaticConf 
+{
+	public const int STREAM_BYTE = 4;
 
 	public static float DELTA_TIME = 0.6558f;
 	public static int TURN = 0;
