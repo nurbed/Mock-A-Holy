@@ -38,7 +38,14 @@ public class Player : MonoBehaviour
                 }
                 else if (m_animationId == -1)
                 {
-                    m_animationId = Random.Range(1, 4);
+                    if (Random.Range(0, 800) < 100)
+                    {
+                        m_animationId = Random.Range(1, 4);
+                    }
+                    else
+                    {
+                        m_animationId = StaticConf.RIGHT_MOVE;
+                    }
                 }
 
                 TURN = 0;

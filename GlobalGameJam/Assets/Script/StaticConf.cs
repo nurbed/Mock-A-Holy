@@ -10,6 +10,8 @@ public static class StaticConf
 
     public static float ANALOGIC_TRIGGER = 0.6f;
 
+    public static int RIGHT_MOVE = -1;
+
     public const string IdleState = "Idle";
 
     public const string AdeptiTag = "Adepti";

@@ -33,9 +33,15 @@ public class God : MonoBehaviour {
             if (TURN == 0)
             {
                 if (Random.Range(0, 100) < 50)
+                {
                     m_audioSource.PlayOneShot(Good1);
+                    StaticConf.RIGHT_MOVE = 1;
+                }
                 else
+                {
                     m_audioSource.PlayOneShot(Good2);
+                    StaticConf.RIGHT_MOVE = 2;
+                }
             }
 
             if (TURN == 2)
