@@ -119,7 +119,7 @@ namespace MockAHolyServer
         void bgSendApp_DoWork(object sender, DoWorkEventArgs e)
         {
             Device device = (Device)e.Argument;
-            ObexStatusCode response_status = SendModule.SendFile(device.DeviceInfo, Path.GetFullPath("BluetoothNative.apk"));
+            ObexStatusCode response_status = SendModule.SendFile(device.DeviceInfo, Path.GetFullPath("Mock-A-Holy.apk"));
             e.Result = (response_status != ObexStatusCode.InternalServerError ? device : null);
         }
 
