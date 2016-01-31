@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
                 }
                 else if (m_animationId == -1)
                 {
-                    if (Random.Range(0, 800) < 100)
+                    if (Random.Range(0, 1000) < 150)
                     {
                         m_animationId = Random.Range(1, 5);
                     }
