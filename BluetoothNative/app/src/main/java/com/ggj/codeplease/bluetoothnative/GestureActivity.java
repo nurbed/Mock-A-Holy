@@ -125,7 +125,7 @@ public class GestureActivity extends AppCompatActivity
         {
             view = new TextView(this);
 
-            view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.runa_telefono));
+            view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.runa_frecce_su_giu));
             view.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
             views.add(view);
@@ -166,7 +166,7 @@ public class GestureActivity extends AppCompatActivity
 
         if(xvelocity > this.SWIPE_MIN_VELOCITY && xdiff > this.SWIPE_MIN_DISTANCE)
         {
-            if(ev1x > ev2x) //Swipe Left
+            /*if(ev1x > ev2x) //Swipe Left
             {
                 --currentview;
 
@@ -195,7 +195,7 @@ public class GestureActivity extends AppCompatActivity
             }
 
             flipper.scrollTo(0,0);
-            flipper.setDisplayedChild(currentview);
+            flipper.setDisplayedChild(currentview);*/
         }
         else if(yvelocity > this.SWIPE_MIN_VELOCITY && ydiff > this.SWIPE_MIN_DISTANCE)
         {

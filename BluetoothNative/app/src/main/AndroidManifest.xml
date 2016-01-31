@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/runa_telefono"
+        android:icon="@mipmap/runa_frecce_su_giu"
         android:label="@string/title_activity_gesture"
         android:theme="@style/AppTheme" >
 
