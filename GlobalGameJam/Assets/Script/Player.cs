@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
 	void Start () {
 		id = this.transform.GetSiblingIndex ();
+		m_Animator = GetComponent<Animator>();
 	}
 
 	void Update () {
