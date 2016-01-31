@@ -1,5 +1,5 @@
 <resources>
-    <string name="title_activity_gesture">Moke-A-Holy</string>
+    <string name="title_activity_gesture">Mock-A-Holy</string>
     <string name="app_name">BluetoothNative</string>
     <string name="Text">Bluetooth Disconnected</string>
     <string name="TurnOnBluetooth">Turn On</string>
