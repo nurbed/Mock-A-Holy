@@ -36,3 +36,4 @@ BluetoothServer/packages/
 #unity
 GlobalGameJam/Library/
 GlobalGameJam/Temp/
+*.suo

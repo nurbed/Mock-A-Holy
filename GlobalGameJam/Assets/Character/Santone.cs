@@ -46,7 +46,7 @@ public class Santone : MonoBehaviour {
                     if (StaticConf.TURN == StaticConf.TURN_REWIND)
                 {
                     StaticConf.TURN = 0;
-                    StaticConf.TURN_REWIND = Random.Range(3,7);
+                    StaticConf.TURN_REWIND = Random.Range(3,3);
                 }
                 
                 
@@ -55,19 +55,25 @@ public class Santone : MonoBehaviour {
 
         }
 
-        if (Input.GetButtonDown ("Fire1_1")) {
+        float firstAxisValue = Input.GetAxis("FirstVertical");
+        float secondAxisValue = Input.GetAxis("SecondVertical");
+        if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER) {
 			m_Animator.SetTrigger ("Move0");
 			CheckScore ();
 		}
-		if (Input.GetButtonDown ("Fire2_1")) {
+        else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER)
+		{
 			m_Animator.SetTrigger ("Move1");
 			CheckScore ();
 		}
-		if (Input.GetButtonDown ("Fire3_1")) {
+
+        firstAxisValue = Input.GetAxis("FirstHorizontal");
+        secondAxisValue = Input.GetAxis("SecondHorizontal");
+        if (firstAxisValue > StaticConf.ANALOGIC_TRIGGER && secondAxisValue > StaticConf.ANALOGIC_TRIGGER) {
 			m_Animator.SetTrigger ("Move2");
 			CheckScore ();
 		}
-		if (Input.GetButtonDown ("Fire4_1")) {
+        else if (firstAxisValue < -StaticConf.ANALOGIC_TRIGGER && secondAxisValue < -StaticConf.ANALOGIC_TRIGGER) {
 			m_Animator.SetTrigger ("Move2Flipped");
 			CheckScore ();
 		}
