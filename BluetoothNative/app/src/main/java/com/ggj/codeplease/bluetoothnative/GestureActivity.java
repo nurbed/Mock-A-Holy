@@ -175,7 +175,7 @@ public class GestureActivity extends AppCompatActivity
                     currentview = views.size() - 1;
                 }
 
-                NativeBluetooth.WriteOutputBuffer(0);
+                NativeBluetooth.WriteOutputBuffer(4);
 
                 flipper.setInAnimation(animleftin);
                 flipper.setOutAnimation(animleftout);
@@ -191,7 +191,7 @@ public class GestureActivity extends AppCompatActivity
 
                 flipper.setInAnimation(animrightin);
                 flipper.setOutAnimation(animrightout);
-                NativeBluetooth.WriteOutputBuffer(1);
+                NativeBluetooth.WriteOutputBuffer(3);
             }
 
             flipper.scrollTo(0,0);
@@ -222,7 +222,7 @@ public class GestureActivity extends AppCompatActivity
                 }
                 flipper.setInAnimation(animdownin);
                 flipper.setOutAnimation(animdownout);
-                NativeBluetooth.WriteOutputBuffer(3);
+                NativeBluetooth.WriteOutputBuffer(1);
             }
 
             flipper.scrollTo(0,0);
