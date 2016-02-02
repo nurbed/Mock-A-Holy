@@ -15,15 +15,22 @@ public class Santone : MonoBehaviour {
 
 	float Timer;
     int TURN = 0;
-
+	float idleTimer;
     private int m_animationId = -1;
 
     void Start () {
 		Timer = StaticConf.DELTA_TIME;
+		idleTimer = Random.Range (0.5f, 2.5f);
     }
 
 	void Update () 
 	{
+		if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+			idleTimer -= 0.01f;
+		if (idleTimer < 0) {
+			m_Animator.SetTrigger("IdleAnim");
+			idleTimer = Random.Range (0.5f, 2.5f);
+		}
 		Timer -= Time.deltaTime;
         if (Timer < 0)
         {
