@@ -1,0 +1,48 @@
+{"skeleton":{"images":"images/sciamano/diffuse/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"panza","bone":"root","attachment":"panza"},
+	{"name":"piedesin","bone":"root","attachment":"piedesin"},
+	{"name":"piededes","bone":"root","attachment":"piededes"},
+	{"name":"gambasin","bone":"root","attachment":"gambasin"},
+	{"name":"gambades","bone":"root","attachment":"gambades"},
+	{"name":"polpdes","bone":"root","attachment":"polpdes"},
+	{"name":"polpsin","bone":"root","attachment":"polpsin"},
+	{"name":"piume","bone":"root","attachment":"piume"},
+	{"name":"testa","bone":"root","attachment":"testa"},
+	{"name":"bastsu","bone":"root","attachment":"bastsu"},
+	{"name":"manosin","bone":"root","attachment":"manosin"},
+	{"name":"manodes","bone":"root","attachment":"manodes"},
+	{"name":"bastgiu","bone":"root","attachment":"bastgiu"},
+	{"name":"avambracdes","bone":"root","attachment":"avambracdes"},
+	{"name":"avambracsin","bone":"root","attachment":"avambracsin"},
+	{"name":"bracsin","bone":"root","attachment":"bracsin"},
+	{"name":"bracdes","bone":"root","attachment":"bracdes"},
+	{"name":"tronco1","bone":"root","attachment":"tronco1"},
+	{"name":"culo","bone":"root","attachment":"culo"}
+],
+"skins":{
+	"default":{
+		"culo":{"culo":{"x":354.5,"y":197,"width":233,"height":128}},
+		"tronco1":{"tronco1":{"x":330.5,"y":292,"width":245,"height":238}},
+		"bracdes":{"bracdes":{"x":464,"y":371.5,"width":144,"height":69}},
+		"bracsin":{"bracsin":{"x":239,"y":370.5,"width":144,"height":69}},
+		"avambracsin":{"avambracsin":{"x":177,"y":337,"width":70,"height":126}},
+		"avambracdes":{"avambracdes":{"x":521,"y":338,"width":70,"height":126}},
+		"bastgiu":{"bastgiu":{"x":611.5,"y":204,"width":39,"height":182}},
+		"manodes":{"manodes":{"x":517,"y":262,"width":82,"height":82}},
+		"manosin":{"manosin":{"x":183,"y":265,"width":82,"height":82}},
+		"bastsu":{"bastsu":{"x":615.5,"y":413,"width":35,"height":336}},
+		"testa":{"testa":{"x":344.5,"y":425,"width":91,"height":136}},
+		"piume":{"piume":{"x":339.5,"y":581,"width":351,"height":242}},
+		"polpsin":{"polpsin":{"x":256,"y":90,"width":80,"height":140}},
+		"polpdes":{"polpdes":{"x":451,"y":92,"width":80,"height":140}},
+		"gambades":{"gambades":{"x":425.5,"y":173.5,"width":133,"height":129}},
+		"gambasin":{"gambasin":{"x":287.5,"y":172.5,"width":133,"height":129}},
+		"piededes":{"piededes":{"x":461,"y":38,"width":98,"height":54}},
+		"piedesin":{"piedesin":{"x":246,"y":36,"width":98,"height":54}},
+		"panza":{"panza":{"x":350.5,"y":239,"width":205,"height":198}}
+	}
+},
+"animations":{"animation":{}}
+}
