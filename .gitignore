@@ -37,3 +37,5 @@ BluetoothServer/packages/
 GlobalGameJam/Library/
 GlobalGameJam/Temp/
 *.suo
+Mock-A-Holy/Temp/
+Mock-A-Holy/Library/
