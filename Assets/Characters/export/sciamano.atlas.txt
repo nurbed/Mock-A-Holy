@@ -1,54 +1,54 @@
 
 sciamano.png
-size: 1024,512
+size: 2048,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 avambracdes
   rotate: false
-  xy: 510, 184
+  xy: 304, 140
   size: 70, 126
   orig: 70, 126
   offset: 0, 0
   index: -1
 avambracdes2
-  rotate: true
-  xy: 933, 166
+  rotate: false
+  xy: 1818, 440
   size: 132, 70
   orig: 132, 70
   offset: 0, 0
   index: -1
 avambracsin
   rotate: false
-  xy: 521, 56
+  xy: 376, 184
   size: 70, 126
   orig: 70, 126
   offset: 0, 0
   index: -1
 avambracsin2
   rotate: false
-  xy: 744, 90
+  xy: 1696, 345
   size: 132, 70
   orig: 132, 70
   offset: 0, 0
   index: -1
 bastgiu
-  rotate: true
-  xy: 2, 24
+  rotate: false
+  xy: 532, 165
   size: 28, 145
   orig: 28, 145
   offset: 0, 0
   index: -1
 bastsu
-  rotate: true
-  xy: 562, 475
+  rotate: false
+  xy: 1908, 96
   size: 35, 342
   orig: 35, 342
   offset: 0, 0
   index: -1
 bracdes
-  rotate: true
-  xy: 304, 122
+  rotate: false
+  xy: 1550, 441
   size: 144, 69
   orig: 144, 69
   offset: 0, 0
@@ -62,77 +62,77 @@ bracdes2
   index: -1
 bracsin
   rotate: false
-  xy: 375, 110
+  xy: 1550, 370
   size: 144, 69
   orig: 144, 69
   offset: 0, 0
   index: -1
 bracsin2
   rotate: false
-  xy: 788, 162
+  xy: 562, 313
   size: 143, 67
   orig: 143, 67
   offset: 0, 0
   index: -1
 culo
   rotate: false
-  xy: 562, 345
+  xy: 562, 382
   size: 233, 128
   orig: 233, 128
   offset: 0, 0
   index: -1
 gambades
   rotate: false
-  xy: 797, 344
+  xy: 797, 381
   size: 133, 129
   orig: 133, 129
   offset: 0, 0
   index: -1
 gambasin
   rotate: false
-  xy: 375, 181
+  xy: 932, 381
   size: 133, 129
   orig: 133, 129
   offset: 0, 0
   index: -1
 manodes
   rotate: false
-  xy: 743, 6
+  xy: 448, 228
   size: 82, 82
   orig: 82, 82
   offset: 0, 0
   index: -1
 manodes2
-  rotate: true
-  xy: 593, 2
+  rotate: false
+  xy: 1830, 365
   size: 76, 73
   orig: 76, 73
   offset: 0, 0
   index: -1
 manodes3
   rotate: false
-  xy: 933, 300
+  xy: 1952, 442
   size: 89, 68
   orig: 89, 68
   offset: 0, 0
   index: -1
 manosin
   rotate: false
-  xy: 827, 6
+  xy: 707, 298
   size: 82, 82
   orig: 82, 82
   offset: 0, 0
   index: -1
 manosin2
-  rotate: true
-  xy: 668, 2
+  rotate: false
+  xy: 448, 153
   size: 76, 73
   orig: 76, 73
   offset: 0, 0
   index: -1
 manosin3
-  rotate: true
-  xy: 593, 80
+  rotate: false
+  xy: 1696, 417
   size: 120, 93
   orig: 120, 93
   offset: 0, 0
@@ -145,15 +145,15 @@ panza
   offset: 0, 0
   index: -1
 piededes
-  rotate: true
-  xy: 688, 102
+  rotate: false
+  xy: 791, 325
   size: 98, 54
   orig: 98, 54
   offset: 0, 0
   index: -1
 piedesin
   rotate: false
-  xy: 878, 106
+  xy: 891, 325
   size: 98, 54
   orig: 98, 54
   offset: 0, 0
@@ -167,35 +167,35 @@ piume
   index: -1
 polpdes
   rotate: false
-  xy: 932, 370
+  xy: 1386, 370
   size: 80, 140
   orig: 80, 140
   offset: 0, 0
   index: -1
 polpsin
-  rotate: true
-  xy: 353, 28
+  rotate: false
+  xy: 1468, 370
   size: 80, 140
   orig: 80, 140
   offset: 0, 0
   index: -1
 testa
   rotate: false
-  xy: 695, 207
+  xy: 1293, 374
   size: 91, 136
   orig: 91, 136
   offset: 0, 0
   index: -1
 testa2
   rotate: false
-  xy: 582, 202
+  xy: 1067, 369
   size: 111, 141
   orig: 111, 141
   offset: 0, 0
   index: -1
 testa3
-  rotate: true
-  xy: 788, 231
+  rotate: false
+  xy: 1180, 369
   size: 111, 141
   orig: 111, 141
   offset: 0, 0
