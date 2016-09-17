@@ -7,6 +7,17 @@ using Spine.Unity.Modules;
 
 public class AdeptoAnimController : MonoBehaviour {
 
+    public static float ANALOGIC_TRIGGER = 0.6f;
+
+    enum AnimType
+    {
+        NONE,
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    }
+
     #region Inspector
     // [SpineAnimation] attribute allows an Inspector dropdown of Spine animation names coming form SkeletonAnimation.
     [SpineAnimation]
@@ -20,17 +31,22 @@ public class AdeptoAnimController : MonoBehaviour {
 
     [SpineAnimation]
     public string rightAnimationName;
+
     [SpineAnimation]
     public string leftAnimationName;
     #endregion
 
     SkeletonAnimation skeletonAnimation;
 
+    public float m_fStartTime = 0f;
+
+    private bool m_bManualCtrl = true;
+
+    private AnimType m_eNextAnim = AnimType.NONE;
+
     // Spine.AnimationState and Spine.Skeleton are not Unity-serialized objects. You will not see them as fields in the inspector.
     public Spine.AnimationState spineAnimationState;
     public Spine.Skeleton skeleton;
-
-    public Sprite mySprite;
 
     void Start()
     {
@@ -41,56 +57,72 @@ public class AdeptoAnimController : MonoBehaviour {
 
         spineAnimationState.Data.DefaultMix = 0.0f;
 
-        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f).Time = 1.0f;
+        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f).Time = m_fStartTime;
 
-        var clickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0));
+        spineAnimationState.Complete += SpineAnimationState_Complete;
 
-        clickStream.Buffer(clickStream.Throttle(TimeSpan.FromMilliseconds(250)))
-            .Where(xs => xs.Count >= 2)
-            .Subscribe(xs =>
-            {
-                if (spineAnimationState.GetCurrent(0).Loop) // || spineAnimationState.GetCurrent(0).Time > 0.5f)
-                    spineAnimationState.Complete += SpineAnimationState_Complete;
-            });
+        //var clickStream = Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0));
 
-        var skeletonRenderer = GetComponent<SkeletonRenderer>();
-        skeletonRenderer.skeleton.AttachUnitySprite("gamba des", mySprite);
+        //clickStream.Buffer(clickStream.Throttle(TimeSpan.FromMilliseconds(250)))
+        //    .Where(xs => xs.Count >= 2)
+        //    .Subscribe(xs =>
+        //    {
+        //        if (spineAnimationState.GetCurrent(0).Loop) // || spineAnimationState.GetCurrent(0).Time > 0.5f)
+        //            spineAnimationState.Complete += SpineAnimationState_Complete;
+        //    });
+
+        //var skeletonRenderer = GetComponent<SkeletonRenderer>();
+        //skeletonRenderer.skeleton.AttachUnitySprite("gamba des", mySprite);
+    }
+
+    private void SpineAnimationState_Complete(Spine.AnimationState state, int trackIndex, int loopCount)
+    {
+        if(m_eNextAnim != AnimType.NONE)
+        {
+            StartAnim(m_eNextAnim);
+            m_eNextAnim = AnimType.NONE;
+        }
     }
 
     bool firstTime = false;
     void Update()
     {
-        if (firstTime)
+        if (m_bManualCtrl)
         {
-            Spine.Animation walkAnimation = skeleton.Data.FindAnimation(idleAnimationName);
-            walkAnimation.Apply(skeleton, 0f, 1.0f, true, null);
-            skeleton.UpdateWorldTransform();
-            firstTime = false;
+            float firstAxisValue = Input.GetAxis("Vertical");
+            float secondAxisValue = Input.GetAxis("Horizontal");
+            //Debug.Log("axis value:" + firstAxisValue.ToString());
+            if (firstAxisValue > ANALOGIC_TRIGGER)
+                m_eNextAnim = AnimType.UP;
+            else if (firstAxisValue < -ANALOGIC_TRIGGER)
+                m_eNextAnim = AnimType.DOWN;
+            if (secondAxisValue > ANALOGIC_TRIGGER)
+                m_eNextAnim = AnimType.RIGHT;
+            else if (secondAxisValue < -ANALOGIC_TRIGGER)
+                m_eNextAnim = AnimType.LEFT;
         }
     }
 
-    int prog = 0;
-    private void SpineAnimationState_Complete(Spine.AnimationState state, int trackIndex, int loopCount)
+    private void StartAnim(AnimType anim)
     {
-        switch (prog)
+        if (spineAnimationState.GetCurrent(0).Loop)
         {
-            case 0:
-        spineAnimationState.SetAnimation(0, upAnimationName, false);
-                break;
-            case 1:
-        spineAnimationState.SetAnimation(0, downAnimationName, false);
-                break;
-            case 2:
-                spineAnimationState.SetAnimation(0, rightAnimationName, false);
-                break;
-            case 3:
-                spineAnimationState.SetAnimation(0, leftAnimationName, false);
-                break;
+            switch (anim)
+            {
+                case AnimType.UP:
+                    spineAnimationState.SetAnimation(0, upAnimationName, false);
+                    break;
+                case AnimType.DOWN:
+                    spineAnimationState.SetAnimation(0, downAnimationName, false);
+                    break;
+                case AnimType.RIGHT:
+                    spineAnimationState.SetAnimation(0, rightAnimationName, false);
+                    break;
+                case AnimType.LEFT:
+                    spineAnimationState.SetAnimation(0, leftAnimationName, false);
+                    break;
+            }
+            spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
         }
-        if (++prog > 3) prog = 0;
-
-
-        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
-        spineAnimationState.Complete -= SpineAnimationState_Complete;
     }
 }

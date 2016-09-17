@@ -187,12 +187,13 @@
     <Compile Include="Assets\Extras\spine-unity\SkeletonUtility\SkeletonUtilityConstraint.cs" />
     <Compile Include="Assets\Extras\spine-unity\SkeletonUtility\SkeletonUtilitySubmeshRenderer.cs" />
     <Compile Include="Assets\Extras\spine-unity\SpineAttributes.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\MusicManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Characters\Adepto\adepto.atlas.txt" />
-    <None Include="Assets\Characters\Sciamano\sciamano.atlas.txt" />
+    <None Include="Assets\Characters\adepto\adepto.atlas.txt" />
+    <None Include="Assets\Characters\sciamano\sciamano.atlas.txt" />
     <None Include="Assets\Extras\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Extras\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Extras\Demigiant\DOTween\readme.txt" />
