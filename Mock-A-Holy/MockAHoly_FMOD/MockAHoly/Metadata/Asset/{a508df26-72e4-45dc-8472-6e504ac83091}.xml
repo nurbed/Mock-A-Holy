@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="EncodableAsset" id="{a508df26-72e4-45dc-8472-6e504ac83091}">
+        <property name="assetPath">
+            <value>Sfx/Shaman/</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6964ac7e-d9fe-4b68-b7a8-07684b92322d}</destination>
+        </relationship>
+    </object>
+</objects>

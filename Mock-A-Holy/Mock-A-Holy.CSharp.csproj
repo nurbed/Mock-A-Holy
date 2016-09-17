@@ -188,6 +188,7 @@
     <Compile Include="Assets\Extras\spine-unity\SkeletonUtility\SkeletonUtilitySubmeshRenderer.cs" />
     <Compile Include="Assets\Extras\spine-unity\SpineAttributes.cs" />
     <Compile Include="Assets\Menu\MainMenuManager.cs" />
+    <Compile Include="Assets\MusicManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Characters\Adepto\adepto.atlas.txt" />
