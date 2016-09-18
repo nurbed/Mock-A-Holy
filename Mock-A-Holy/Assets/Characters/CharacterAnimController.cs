@@ -17,8 +17,10 @@ public class CharacterAnimController : MonoBehaviour {
         DOWN_BOLT,
         LEFT_BOLT,
         RIGHT_BOLT,
-        UP_FEAR,
-        DOWN_FEAR,
+        UP_FEAR_DX,
+        UP_FEAR_SX,
+        DOWN_FEAR_DX,
+        DOWN_FEAR_SX,
         LEFT_FEAR,
         RIGHT_FEAR
     }
@@ -141,11 +143,21 @@ public class CharacterAnimController : MonoBehaviour {
                     case AnimType.DOWN_BOLT:
                         spineAnimationState.SetAnimation(0, downBoltAnimationName, false);
                         break;
-                    case AnimType.UP_FEAR:
+                    case AnimType.UP_FEAR_DX:
                         spineAnimationState.SetAnimation(0, upFearAnimationName, false);
                         spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
-                    case AnimType.DOWN_FEAR:
+                    case AnimType.UP_FEAR_SX:
+                        skeleton.FlipX = true;
+                        spineAnimationState.SetAnimation(0, upFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.DOWN_FEAR_DX:
+                        spineAnimationState.SetAnimation(0, downFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.DOWN_FEAR_SX:
+                        skeleton.FlipX = true;
                         spineAnimationState.SetAnimation(0, downFearAnimationName, false);
                         spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;

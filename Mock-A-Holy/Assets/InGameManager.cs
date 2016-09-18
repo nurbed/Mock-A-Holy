@@ -3,8 +3,6 @@ using System.Collections;
 
 public class InGameManager : MonoBehaviour
 {
-    public static float ANALOGIC_TRIGGER = 0.6f;
-
     public GameObject m_Sciamano;
 
     public GameObject m_AdeptiFirstRow;
@@ -20,6 +18,10 @@ public class InGameManager : MonoBehaviour
 
     private float m_Timer = 0;
     private int m_Turn = 0;
+
+    private CharacterAnimController[] m_vAnimControllerFirst;
+    private CharacterAnimController[] m_vAnimControllerSecond;
+    private CharacterAnimController[] m_vAnimControllerThird;
 
     void Awake()
     {
@@ -41,6 +43,28 @@ public class InGameManager : MonoBehaviour
         {
 
         }
+
+        m_vAnimControllerFirst = new CharacterAnimController[m_AdeptiFirstRow.transform.childCount];
+        for (int idx = 0; idx < m_AdeptiFirstRow.transform.childCount; ++idx)
+        {
+            var child = m_AdeptiFirstRow.transform.GetChild(idx);
+            m_vAnimControllerFirst[idx] = child.gameObject.GetComponent<CharacterAnimController>();
+        }
+
+        m_vAnimControllerSecond = new CharacterAnimController[m_AdeptiSecondRow.transform.childCount];
+        for (int idx = 0; idx < m_AdeptiSecondRow.transform.childCount; ++idx)
+        {
+            var child = m_AdeptiSecondRow.transform.GetChild(idx);
+            m_vAnimControllerSecond[idx] = child.gameObject.GetComponent<CharacterAnimController>();
+        }
+
+        m_vAnimControllerThird = new CharacterAnimController[m_AdeptiThirdRow.transform.childCount];
+        for (int idx = 0; idx < m_AdeptiThirdRow.transform.childCount; ++idx)
+        {
+            var child = m_AdeptiThirdRow.transform.GetChild(idx);
+            m_vAnimControllerThird[idx] = child.gameObject.GetComponent<CharacterAnimController>();
+        }
+
 
         m_Timer = 0;
         m_Turn = 0;
@@ -73,10 +97,10 @@ public class InGameManager : MonoBehaviour
                 switch (newAnim)
                 {
                     case CharacterAnimController.AnimType.DOWN:
-                        animCtrl.StartAnim(CharacterAnimController.AnimType.DOWN_FEAR);
+                        animCtrl.StartAnim(CharacterAnimController.AnimType.DOWN_FEAR_DX);
                         break;
                     case CharacterAnimController.AnimType.UP:
-                        animCtrl.StartAnim(CharacterAnimController.AnimType.UP_FEAR);
+                        animCtrl.StartAnim(CharacterAnimController.AnimType.UP_FEAR_DX);
                         break;
                     case CharacterAnimController.AnimType.LEFT:
                         animCtrl.StartAnim(CharacterAnimController.AnimType.LEFT_FEAR);
@@ -91,10 +115,10 @@ public class InGameManager : MonoBehaviour
                 switch (newAnim)
                 {
                     case CharacterAnimController.AnimType.DOWN:
-                        animCtrl.StartAnim(CharacterAnimController.AnimType.DOWN_FEAR);
+                        animCtrl.StartAnim(CharacterAnimController.AnimType.DOWN_FEAR_SX);
                         break;
                     case CharacterAnimController.AnimType.UP:
-                        animCtrl.StartAnim(CharacterAnimController.AnimType.UP_FEAR);
+                        animCtrl.StartAnim(CharacterAnimController.AnimType.UP_FEAR_SX);
                         break;
                     case CharacterAnimController.AnimType.LEFT:
                         animCtrl.StartAnim(CharacterAnimController.AnimType.LEFT_FEAR);
@@ -125,16 +149,14 @@ public class InGameManager : MonoBehaviour
         if (m_Turn >= 3)
             m_Turn = 0;
 
-        float firstAxisValue = Input.GetAxis("Vertical");
-        float secondAxisValue = Input.GetAxis("Horizontal");
         CharacterAnimController.AnimType newAnim = CharacterAnimController.AnimType.NONE;
-        if (firstAxisValue > ANALOGIC_TRIGGER)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             newAnim = CharacterAnimController.AnimType.UP;
-        else if (firstAxisValue < -ANALOGIC_TRIGGER)
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
             newAnim = CharacterAnimController.AnimType.DOWN;
-        if (secondAxisValue > ANALOGIC_TRIGGER)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
             newAnim = CharacterAnimController.AnimType.RIGHT;
-        else if (secondAxisValue < -ANALOGIC_TRIGGER)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
             newAnim = CharacterAnimController.AnimType.LEFT;
 
         if (newAnim != CharacterAnimController.AnimType.NONE && m_oHumanCtrl.IsOnIdle())
@@ -148,43 +170,30 @@ public class InGameManager : MonoBehaviour
 
                 if (numRow == 0)
                 {
-                    numAdepto = Random.Range(0, m_AdeptiFirstRow.transform.childCount);
+                    numAdepto = Random.Range(0, m_vAnimControllerFirst.Length);
                 }
                 else if (numRow == 1)
                 {
-                    numAdepto = Random.Range(0, m_AdeptiSecondRow.transform.childCount);
+                    numAdepto = Random.Range(0, m_vAnimControllerSecond.Length);
                 }
                 else if (numRow == 2)
                 {
-                    numAdepto = Random.Range(0, m_AdeptiThirdRow.transform.childCount);
+                    numAdepto = Random.Range(0, m_vAnimControllerThird.Length);
                 }
 
-                for (int idx = 0; idx < m_AdeptiFirstRow.transform.childCount; ++idx)
+                for (int idx = 0; idx < m_vAnimControllerFirst.Length; ++idx)
                 {
-                    var child = m_AdeptiFirstRow.transform.GetChild(idx);
-                    CharacterAnimController animCtrl = child.gameObject.GetComponent<CharacterAnimController>();
-                    if (animCtrl != null)
-                    {
-                        StartAnim(animCtrl, newAnim, numRow == 0, numAdepto, idx);
-                    }
+                    StartAnim(m_vAnimControllerFirst[idx], newAnim, numRow == 0, numAdepto, idx);
                 }
-                for (int idx = 0; idx < m_AdeptiSecondRow.transform.childCount; ++idx)
+                for (int idx = 0; idx < m_vAnimControllerSecond.Length; ++idx)
                 {
-                    var child = m_AdeptiSecondRow.transform.GetChild(idx);
-                    CharacterAnimController animCtrl = child.gameObject.GetComponent<CharacterAnimController>();
-                    if (animCtrl != null)
-                        StartAnim(animCtrl, newAnim, numRow == 1, numAdepto, idx);
+                    StartAnim(m_vAnimControllerSecond[idx], newAnim, numRow == 1, numAdepto, idx);
                 }
-                for (int idx = 0; idx < m_AdeptiThirdRow.transform.childCount; ++idx)
+                for (int idx = 0; idx < m_vAnimControllerThird.Length; ++idx)
                 {
-                    var child = m_AdeptiThirdRow.transform.GetChild(idx);
-                    CharacterAnimController animCtrl = child.gameObject.GetComponent<CharacterAnimController>();
-                    if (animCtrl != null)
-                        StartAnim(animCtrl, newAnim, numRow == 2, numAdepto, idx);
+                    StartAnim(m_vAnimControllerThird[idx], newAnim, numRow == 2, numAdepto, idx);
                 }
-
             }
-
             else
             {
 

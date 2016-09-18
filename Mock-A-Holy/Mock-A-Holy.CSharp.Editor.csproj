@@ -147,6 +147,7 @@
     <Compile Include="Assets\Extras\spine-unity\SkeletonUtility\Editor\SkeletonUtilitySubmeshRendererInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Background\fuoco.atlas.txt" />
     <None Include="Assets\Characters\Adepto\adepto.atlas.txt" />
     <None Include="Assets\Characters\Sciamano\sciamano.atlas.txt" />
     <None Include="Assets\Extras\Demigiant\DOTween\DOTween.XML" />

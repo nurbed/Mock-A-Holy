@@ -1,0 +1,48 @@
+
+fuoco.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+base 1
+  rotate: false
+  xy: 2, 2
+  size: 202, 232
+  orig: 202, 232
+  offset: 0, 0
+  index: -1
+base 2
+  rotate: false
+  xy: 2, 236
+  size: 215, 272
+  orig: 215, 272
+  offset: 0, 0
+  index: -1
+fiamma 1
+  rotate: false
+  xy: 366, 324
+  size: 53, 184
+  orig: 53, 184
+  offset: 0, 0
+  index: -1
+fiamma 2
+  rotate: false
+  xy: 219, 314
+  size: 145, 194
+  orig: 145, 194
+  offset: 0, 0
+  index: -1
+fiamma 3
+  rotate: false
+  xy: 421, 380
+  size: 45, 128
+  orig: 45, 128
+  offset: 0, 0
+  index: -1
+fiamma 4
+  rotate: false
+  xy: 219, 241
+  size: 62, 71
+  orig: 62, 71
+  offset: 0, 0
+  index: -1

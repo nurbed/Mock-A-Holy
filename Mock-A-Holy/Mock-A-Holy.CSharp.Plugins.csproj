@@ -327,6 +327,7 @@
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityWinRTBridge\ThreadPoolScheduler_UnityWinRT.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Background\fuoco.atlas.txt" />
     <None Include="Assets\Characters\Adepto\adepto.atlas.txt" />
     <None Include="Assets\Characters\Sciamano\sciamano.atlas.txt" />
     <None Include="Assets\Extras\Demigiant\DOTween\DOTween.XML" />
