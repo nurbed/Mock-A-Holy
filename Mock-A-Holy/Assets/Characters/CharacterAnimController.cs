@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Spine.Unity;
-using UniRx;
 using System;
 using Spine.Unity.Modules;
 
@@ -13,7 +12,15 @@ public class CharacterAnimController : MonoBehaviour {
         UP,
         DOWN,
         LEFT,
-        RIGHT
+        RIGHT,
+        UP_BOLT,
+        DOWN_BOLT,
+        LEFT_BOLT,
+        RIGHT_BOLT,
+        UP_FEAR,
+        DOWN_FEAR,
+        LEFT_FEAR,
+        RIGHT_FEAR
     }
 
     #region Inspector
@@ -32,6 +39,31 @@ public class CharacterAnimController : MonoBehaviour {
 
     [SpineAnimation]
     public string leftAnimationName;
+
+    [SpineAnimation]
+    public string upBoltAnimationName;
+
+    [SpineAnimation]
+    public string downBoltAnimationName;
+
+    [SpineAnimation]
+    public string leftBoltAnimationName;
+
+    [SpineAnimation]
+    public string rightBoltAnimationName;
+
+    [SpineAnimation]
+    public string upFearAnimationName;
+
+    [SpineAnimation]
+    public string downFearAnimationName;
+
+    [SpineAnimation]
+    public string leftFearAnimationName;
+
+    [SpineAnimation]
+    public string rightFearAnimationName;
+
     #endregion
 
     SkeletonAnimation skeletonAnimation;
@@ -73,7 +105,7 @@ public class CharacterAnimController : MonoBehaviour {
 
     private void SpineAnimationState_Complete(Spine.AnimationState state, int trackIndex, int loopCount)
     {
-        if(m_eNextAnim != AnimType.NONE)
+        if (m_eNextAnim != AnimType.NONE)
         {
             if (spineAnimationState.GetCurrent(0).Loop)
             {
@@ -81,18 +113,49 @@ public class CharacterAnimController : MonoBehaviour {
                 {
                     case AnimType.UP:
                         spineAnimationState.SetAnimation(0, upAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
                     case AnimType.DOWN:
                         spineAnimationState.SetAnimation(0, downAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
                     case AnimType.RIGHT:
                         spineAnimationState.SetAnimation(0, rightAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
                     case AnimType.LEFT:
                         spineAnimationState.SetAnimation(0, leftAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.UP_BOLT:
+                        spineAnimationState.SetAnimation(0, upBoltAnimationName, false);
+                        break;
+                    case AnimType.RIGHT_BOLT:
+                        spineAnimationState.SetAnimation(0, rightBoltAnimationName, false);
+                        break;
+                    case AnimType.LEFT_BOLT:
+                        spineAnimationState.SetAnimation(0, leftBoltAnimationName, false);
+                        break;
+                    case AnimType.DOWN_BOLT:
+                        spineAnimationState.SetAnimation(0, downBoltAnimationName, false);
+                        break;
+                    case AnimType.UP_FEAR:
+                        spineAnimationState.SetAnimation(0, upFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.DOWN_FEAR:
+                        spineAnimationState.SetAnimation(0, downFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.LEFT_FEAR:
+                        spineAnimationState.SetAnimation(0, leftFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+                        break;
+                    case AnimType.RIGHT_FEAR:
+                        spineAnimationState.SetAnimation(0, rightFearAnimationName, false);
+                        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
                 }
-                spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
             }
 
             m_eNextAnim = AnimType.NONE;

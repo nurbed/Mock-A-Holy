@@ -7,7 +7,7 @@ public delegate void OnStateChangeHandler();
 
 public class GameManager : Object
 {
-    protected GameManager() { }
+    protected GameManager() : base() { }
     private static GameManager instance = null;
     public event OnStateChangeHandler OnStateChange;
     public GameState GameState { get; private set; }
@@ -16,12 +16,12 @@ public class GameManager : Object
     {
         get
         {
-            if (GameManager.instance == null)
+            if (instance == null)
             {
                 Object.DontDestroyOnLoad(GameManager.instance);
-                GameManager.instance = new GameManager();
+                instance = new GameManager();
             }
-            return GameManager.instance;
+            return instance;
         }
 
     }
@@ -29,7 +29,7 @@ public class GameManager : Object
     public void SetGameState(GameState state)
     {
         this.GameState = state;
-        OnStateChange();
+        if(OnStateChange != null) OnStateChange();
     }
 
     public void OnApplicationQuit()
