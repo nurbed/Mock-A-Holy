@@ -8,11 +8,6 @@ public class MusicManager : MonoBehaviour
     public string MUS_MainMenuEvent;
     FMOD.Studio.EventInstance MUS_MainMenu;
     public string p_MenuState;
-    public string p_AdeptStatus;
-    public string p_Thunderstruck;
-
-    // float value;
-
 
     // Use this for initialization
     void Start()
