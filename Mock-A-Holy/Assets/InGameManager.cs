@@ -165,7 +165,7 @@ public class InGameManager : MonoBehaviour
             {
                 m_oHumanCtrl.StartAnim(newAnim);
 
-                int numRow = Random.Range(0, 3);
+                int numRow = Random.Range(0, 5);
                 int numAdepto = -1;
 
                 if (numRow == 0)

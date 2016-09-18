@@ -22,4 +22,9 @@ public class MusicManager : MonoBehaviour
 
     //    MUS_MainMenu.setParameterValue(p_MenuState, value);
     }
+
+    void OnDestroy()
+    {
+        MUS_MainMenu.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }
