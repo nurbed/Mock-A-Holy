@@ -23,6 +23,13 @@ public class InGameManager : MonoBehaviour
     private CharacterAnimController[] m_vAnimControllerSecond;
     private CharacterAnimController[] m_vAnimControllerThird;
 
+    [FMODUnity.EventRef]
+    public string MUS_Stage_01_Event;
+    FMOD.Studio.EventInstance MUS_Stage_01;
+    public string p_AdeptsStatus;
+    public string p_Thunderstruck;
+
+
     void Awake()
     {
         GM = GameManager.Instance;
@@ -34,6 +41,9 @@ public class InGameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        MUS_Stage_01 = FMODUnity.RuntimeManager.CreateInstance(MUS_Stage_01_Event);
+        MUS_Stage_01.start();
+
         GM.SetGameState(GameState.GAME_SCIAMANO);
         if (GM.GameState == GameState.GAME_SCIAMANO)
         {
@@ -76,6 +86,9 @@ public class InGameManager : MonoBehaviour
         {
             if (numAdepto == idx)
             {
+                //    MUS_Stage_01.setParameterValue(p_AdeptStatus, value);
+                MUS_Stage_01.setParameterValue(p_Thunderstruck, 1);
+
                 switch (newAnim)
                 {
                     case CharacterAnimController.AnimType.DOWN:
@@ -144,6 +157,7 @@ public class InGameManager : MonoBehaviour
         {
             m_Timer -= 1f;
             ++m_Turn;
+            MUS_Stage_01.setParameterValue(p_Thunderstruck, 0);
         }
 
         if (m_Turn >= 3)
