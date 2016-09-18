@@ -105,6 +105,7 @@ public class CharacterAnimController : MonoBehaviour {
 
     private void SpineAnimationState_Complete(Spine.AnimationState state, int trackIndex, int loopCount)
     {
+        skeleton.FlipX = false;
         if (m_eNextAnim != AnimType.NONE)
         {
             if (spineAnimationState.GetCurrent(0).Loop)
@@ -120,6 +121,7 @@ public class CharacterAnimController : MonoBehaviour {
                         spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
                     case AnimType.RIGHT:
+                        skeleton.FlipX = true;
                         spineAnimationState.SetAnimation(0, rightAnimationName, false);
                         spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
                         break;
