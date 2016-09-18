@@ -191,7 +191,6 @@
     <Compile Include="Assets\InGameManager.cs" />
     <Compile Include="Assets\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\MusicManager.cs" />
-    <Compile Include="Assets\MusicManager_Scene_01.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Background\fuoco.atlas.txt" />
