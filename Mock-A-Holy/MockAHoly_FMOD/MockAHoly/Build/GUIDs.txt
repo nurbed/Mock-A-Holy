@@ -1,0 +1,9 @@
+{a1f80d64-add7-4c8d-8e2e-f9f2e1d648cf} event:/Menu/Music/MUS_MainMenu
+{81927cc9-4731-4eac-a09d-5e57357cff0a} event:/Menu/Music/MUS_Stage_01
+{22b4ea16-831e-42a4-8181-d9e7c4191691} event:/Menu/Sfx/Adepts
+{ffcb2ecf-6e7a-41d8-aca8-082b8706538c} event:/Menu/Sfx/Deity
+{2cdba592-1fc3-4fb6-b209-9c29227b9e95} event:/Menu/Sfx/SFX_Confirm
+{7a94c648-806f-49af-8732-303efd6bf574} event:/Menu/Sfx/Shaman
+{ff0d33b5-79ca-4a2d-a500-74c43155c94b} bus:/
+{0d90aab1-97db-480a-97c5-87d6ec4711b4} bus:/Reverb
+{4ea5e0ae-c99a-4e26-8410-d21181af878c} bank:/Master Bank
