@@ -167,6 +167,11 @@ public class CharacterAnimController : MonoBehaviour {
 
     }
 
+    public bool IsOnIdle()
+    {
+        return m_eNextAnim == AnimType.NONE;
+    }
+
     public void StartAnim(AnimType anim)
     {
         m_eNextAnim = anim;

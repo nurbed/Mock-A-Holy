@@ -137,7 +137,7 @@ public class InGameManager : MonoBehaviour
         else if (secondAxisValue < -ANALOGIC_TRIGGER)
             newAnim = CharacterAnimController.AnimType.LEFT;
 
-        if (newAnim != CharacterAnimController.AnimType.NONE)
+        if (newAnim != CharacterAnimController.AnimType.NONE && m_oHumanCtrl.IsOnIdle())
         {
             if (GM.GameState == GameState.GAME_SCIAMANO)
             {
