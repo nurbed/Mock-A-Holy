@@ -5,11 +5,9 @@ using UniRx;
 using System;
 using Spine.Unity.Modules;
 
-public class AdeptoAnimController : MonoBehaviour {
+public class CharacterAnimController : MonoBehaviour {
 
-    public static float ANALOGIC_TRIGGER = 0.6f;
-
-    enum AnimType
+    public enum AnimType
     {
         NONE,
         UP,
@@ -39,8 +37,6 @@ public class AdeptoAnimController : MonoBehaviour {
     SkeletonAnimation skeletonAnimation;
 
     public float m_fStartTime = 0f;
-
-    private bool m_bManualCtrl = true;
 
     private AnimType m_eNextAnim = AnimType.NONE;
 
@@ -79,50 +75,37 @@ public class AdeptoAnimController : MonoBehaviour {
     {
         if(m_eNextAnim != AnimType.NONE)
         {
-            StartAnim(m_eNextAnim);
+            if (spineAnimationState.GetCurrent(0).Loop)
+            {
+                switch (m_eNextAnim)
+                {
+                    case AnimType.UP:
+                        spineAnimationState.SetAnimation(0, upAnimationName, false);
+                        break;
+                    case AnimType.DOWN:
+                        spineAnimationState.SetAnimation(0, downAnimationName, false);
+                        break;
+                    case AnimType.RIGHT:
+                        spineAnimationState.SetAnimation(0, rightAnimationName, false);
+                        break;
+                    case AnimType.LEFT:
+                        spineAnimationState.SetAnimation(0, leftAnimationName, false);
+                        break;
+                }
+                spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
+            }
+
             m_eNextAnim = AnimType.NONE;
         }
     }
 
-    bool firstTime = false;
     void Update()
     {
-        if (m_bManualCtrl)
-        {
-            float firstAxisValue = Input.GetAxis("Vertical");
-            float secondAxisValue = Input.GetAxis("Horizontal");
-            //Debug.Log("axis value:" + firstAxisValue.ToString());
-            if (firstAxisValue > ANALOGIC_TRIGGER)
-                m_eNextAnim = AnimType.UP;
-            else if (firstAxisValue < -ANALOGIC_TRIGGER)
-                m_eNextAnim = AnimType.DOWN;
-            if (secondAxisValue > ANALOGIC_TRIGGER)
-                m_eNextAnim = AnimType.RIGHT;
-            else if (secondAxisValue < -ANALOGIC_TRIGGER)
-                m_eNextAnim = AnimType.LEFT;
-        }
+
     }
 
-    private void StartAnim(AnimType anim)
+    public void StartAnim(AnimType anim)
     {
-        if (spineAnimationState.GetCurrent(0).Loop)
-        {
-            switch (anim)
-            {
-                case AnimType.UP:
-                    spineAnimationState.SetAnimation(0, upAnimationName, false);
-                    break;
-                case AnimType.DOWN:
-                    spineAnimationState.SetAnimation(0, downAnimationName, false);
-                    break;
-                case AnimType.RIGHT:
-                    spineAnimationState.SetAnimation(0, rightAnimationName, false);
-                    break;
-                case AnimType.LEFT:
-                    spineAnimationState.SetAnimation(0, leftAnimationName, false);
-                    break;
-            }
-            spineAnimationState.AddAnimation(0, idleAnimationName, true, 0f);
-        }
+        m_eNextAnim = anim;
     }
 }

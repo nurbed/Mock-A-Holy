@@ -6,63 +6,63 @@ filter: Linear,Linear
 repeat: none
 adepto giu
   rotate: false
-  xy: 1052, 788
+  xy: 661, 332
   size: 355, 234
   orig: 355, 234
   offset: 0, 0
   index: -1
 adepto sin
   rotate: false
-  xy: 1052, 526
+  xy: 661, 70
   size: 323, 260
   orig: 323, 260
   offset: 0, 0
   index: -1
 adepto su
   rotate: false
-  xy: 1409, 596
+  xy: 1565, 30
   size: 152, 426
   orig: 152, 426
   offset: 0, 0
   index: -1
 avambraccio des
   rotate: false
-  xy: 476, 30
+  xy: 986, 133
   size: 52, 57
   orig: 52, 57
   offset: 0, 0
   index: -1
 avambraccio sin
   rotate: false
-  xy: 573, 70
+  xy: 986, 74
   size: 52, 57
   orig: 52, 57
   offset: 0, 0
   index: -1
 bacino 1
   rotate: false
-  xy: 76, 38
+  xy: 661, 19
   size: 92, 49
   orig: 92, 49
   offset: 0, 0
   index: -1
 bacino 2
   rotate: false
-  xy: 252, 32
+  xy: 919, 13
   size: 70, 55
   orig: 70, 55
   offset: 0, 0
   index: -1
 bacino 3
   rotate: false
-  xy: 1738, 959
+  xy: 1793, 393
   size: 75, 63
   orig: 75, 63
   offset: 0, 0
   index: -1
 bacino 4
   rotate: false
-  xy: 1248, 461
+  xy: 1915, 464
   size: 75, 63
   orig: 75, 63
   offset: 0, 0
@@ -76,252 +76,273 @@ bagliore giu
   index: -1
 bagliore sin
   rotate: false
-  xy: 2, 89
+  xy: 614, 568
   size: 511, 454
   orig: 511, 454
   offset: 0, 0
   index: -1
 bagliore su
   rotate: false
-  xy: 614, 411
+  xy: 1127, 411
   size: 436, 611
   orig: 436, 611
   offset: 0, 0
   index: -1
 braccio des
   rotate: false
-  xy: 573, 19
+  xy: 2006, 521
   size: 40, 49
   orig: 40, 49
   offset: 0, 0
   index: -1
 braccio sin
   rotate: false
-  xy: 1377, 496
+  xy: 2006, 470
   size: 40, 49
   orig: 40, 49
   offset: 0, 0
   index: -1
 foglia
   rotate: false
-  xy: 1563, 906
+  xy: 1018, 450
   size: 36, 116
   orig: 36, 116
   offset: 0, 0
   index: -1
+fulmine centro
+  rotate: false
+  xy: 359, 6
+  size: 300, 537
+  orig: 300, 537
+  offset: 0, 0
+  index: -1
+fulmine des
+  rotate: false
+  xy: 1565, 458
+  size: 348, 564
+  orig: 348, 564
+  offset: 0, 0
+  index: -1
+fulmine sin
+  rotate: false
+  xy: 2, 2
+  size: 355, 541
+  orig: 355, 541
+  offset: 0, 0
+  index: -1
 gamba des
   rotate: false
-  xy: 324, 2
+  xy: 1945, 358
   size: 60, 39
   orig: 60, 39
   offset: 0, 0
   index: -1
 gamba sin
   rotate: false
-  xy: 386, 2
+  xy: 1719, 23
   size: 60, 39
   orig: 60, 39
   offset: 0, 0
   index: -1
 mano des 1
   rotate: false
-  xy: 170, 39
+  xy: 755, 20
   size: 80, 48
   orig: 80, 48
   offset: 0, 0
   index: -1
 mano des 2
   rotate: false
-  xy: 1121, 386
+  xy: 991, 17
   size: 60, 55
   orig: 60, 55
   offset: 0, 0
   index: -1
 mano des 3
   rotate: false
-  xy: 1815, 959
+  xy: 1870, 393
   size: 66, 63
   orig: 66, 63
   offset: 0, 0
   index: -1
 mano des 4
   rotate: false
-  xy: 515, 116
+  xy: 1719, 208
   size: 50, 81
   orig: 50, 81
   offset: 0, 0
   index: -1
 mano des 5
   rotate: false
-  xy: 1052, 441
+  xy: 1915, 765
   size: 65, 83
   orig: 65, 83
   offset: 0, 0
   index: -1
 mano des 6
   rotate: false
-  xy: 1450, 536
+  xy: 1992, 632
   size: 54, 58
   orig: 54, 58
   offset: 0, 0
   index: -1
 mano des 7
   rotate: false
-  xy: 324, 43
+  xy: 1793, 347
   size: 74, 44
   orig: 74, 44
   offset: 0, 0
   index: -1
 mano des 8
   rotate: false
-  xy: 1563, 600
+  xy: 1719, 136
   size: 48, 70
   orig: 48, 70
   offset: 0, 0
   index: -1
 mano sin 1
   rotate: false
-  xy: 1951, 974
+  xy: 837, 20
   size: 80, 48
   orig: 80, 48
   offset: 0, 0
   index: -1
 mano sin 2
   rotate: false
-  xy: 1183, 390
+  xy: 1855, 290
   size: 60, 55
   orig: 60, 55
   offset: 0, 0
   index: -1
 mano sin 3
   rotate: false
-  xy: 1883, 959
+  xy: 1938, 399
   size: 66, 63
   orig: 66, 63
   offset: 0, 0
   index: -1
 mano sin 4
   rotate: false
-  xy: 1506, 536
+  xy: 1992, 572
   size: 54, 58
   orig: 54, 58
   offset: 0, 0
   index: -1
 mano sin 5
   rotate: false
-  xy: 400, 43
+  xy: 1869, 347
   size: 74, 44
   orig: 74, 44
   offset: 0, 0
   index: -1
 mano sin 6
   rotate: false
-  xy: 1325, 454
+  xy: 1719, 64
   size: 48, 70
   orig: 48, 70
   offset: 0, 0
   index: -1
 maschera 1
   rotate: false
-  xy: 1563, 672
+  xy: 1915, 529
   size: 57, 70
   orig: 57, 70
   offset: 0, 0
   index: -1
 maschera 2
   rotate: false
-  xy: 1119, 443
+  xy: 1915, 682
   size: 61, 81
   orig: 61, 81
   offset: 0, 0
   index: -1
 maschera 3
   rotate: false
-  xy: 515, 371
+  xy: 1915, 850
   size: 66, 172
   orig: 66, 172
   offset: 0, 0
   index: -1
 maschera 4
   rotate: false
-  xy: 1601, 945
+  xy: 1056, 489
   size: 69, 77
   orig: 69, 77
   offset: 0, 0
   index: -1
 piede des
   rotate: false
-  xy: 1052, 394
+  xy: 1056, 442
   size: 67, 45
   orig: 67, 45
   offset: 0, 0
   index: -1
 piede des 2
   rotate: false
-  xy: 1563, 825
+  xy: 1983, 857
   size: 51, 79
   orig: 51, 79
   offset: 0, 0
   index: -1
 piede des 3
   rotate: false
-  xy: 1672, 945
+  xy: 1982, 771
   size: 64, 77
   orig: 64, 77
   offset: 0, 0
   index: -1
 piede des 4
   rotate: false
-  xy: 515, 285
+  xy: 1719, 291
   size: 61, 84
   orig: 61, 84
   offset: 0, 0
   index: -1
 piede sin
   rotate: false
-  xy: 1377, 547
+  xy: 1782, 298
   size: 71, 47
   orig: 71, 47
   offset: 0, 0
   index: -1
 piede sin 2
   rotate: false
-  xy: 515, 199
+  xy: 1983, 938
   size: 61, 84
   orig: 61, 84
   offset: 0, 0
   index: -1
 piede sin 3
   rotate: false
-  xy: 1182, 447
+  xy: 1982, 692
   size: 64, 77
   orig: 64, 77
   offset: 0, 0
   index: -1
 piede sin 4
   rotate: false
-  xy: 1563, 744
+  xy: 1915, 601
   size: 51, 79
   orig: 51, 79
   offset: 0, 0
   index: -1
 polpaccio des
   rotate: false
-  xy: 567, 129
+  xy: 986, 262
   size: 39, 68
   orig: 39, 68
   offset: 0, 0
   index: -1
 polpaccio sin
   rotate: false
-  xy: 530, 46
+  xy: 986, 192
   size: 41, 68
   orig: 41, 68
   offset: 0, 0
   index: -1
 tronco
   rotate: false
-  xy: 2, 8
+  xy: 1719, 377
   size: 72, 79
   orig: 72, 79
   offset: 0, 0

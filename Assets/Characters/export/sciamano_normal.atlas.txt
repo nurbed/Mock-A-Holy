@@ -1,0 +1,223 @@
+
+sciamano_normal.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+avambracdes
+  rotate: false
+  xy: 656, 109
+  size: 70, 126
+  orig: 70, 126
+  offset: 0, 0
+  index: -1
+avambracdes2
+  rotate: false
+  xy: 561, 36
+  size: 132, 70
+  orig: 132, 70
+  offset: 0, 0
+  index: -1
+avambracsin
+  rotate: false
+  xy: 728, 109
+  size: 70, 126
+  orig: 70, 126
+  offset: 0, 0
+  index: -1
+avambracsin2
+  rotate: false
+  xy: 646, 237
+  size: 132, 70
+  orig: 132, 70
+  offset: 0, 0
+  index: -1
+bastgiu
+  rotate: false
+  xy: 956, 2
+  size: 28, 146
+  orig: 28, 146
+  offset: 0, 0
+  index: -1
+bastoneintero
+  rotate: false
+  xy: 1034, 38
+  size: 35, 469
+  orig: 35, 469
+  offset: 0, 0
+  index: -1
+bastsu
+  rotate: false
+  xy: 1071, 171
+  size: 35, 336
+  orig: 35, 336
+  offset: 0, 0
+  index: -1
+bracdes
+  rotate: false
+  xy: 415, 16
+  size: 144, 69
+  orig: 144, 69
+  offset: 0, 0
+  index: -1
+bracdes2
+  rotate: false
+  xy: 590, 440
+  size: 143, 67
+  orig: 143, 67
+  offset: 0, 0
+  index: -1
+bracsin
+  rotate: false
+  xy: 477, 308
+  size: 144, 69
+  orig: 144, 69
+  offset: 0, 0
+  index: -1
+bracsin2
+  rotate: false
+  xy: 511, 108
+  size: 143, 67
+  orig: 143, 67
+  offset: 0, 0
+  index: -1
+culo
+  rotate: false
+  xy: 355, 379
+  size: 233, 128
+  orig: 233, 128
+  offset: 0, 0
+  index: -1
+gambades
+  rotate: false
+  xy: 511, 177
+  size: 133, 129
+  orig: 133, 129
+  offset: 0, 0
+  index: -1
+gambasin
+  rotate: false
+  xy: 623, 309
+  size: 133, 129
+  orig: 133, 129
+  offset: 0, 0
+  index: -1
+manodes
+  rotate: false
+  xy: 695, 25
+  size: 82, 82
+  orig: 82, 82
+  offset: 0, 0
+  index: -1
+manodes2
+  rotate: false
+  xy: 953, 434
+  size: 76, 73
+  orig: 76, 73
+  offset: 0, 0
+  index: -1
+manodes3
+  rotate: false
+  xy: 780, 296
+  size: 89, 68
+  orig: 89, 68
+  offset: 0, 0
+  index: -1
+manosin
+  rotate: false
+  xy: 779, 25
+  size: 82, 82
+  orig: 82, 82
+  offset: 0, 0
+  index: -1
+manosin2
+  rotate: false
+  xy: 956, 150
+  size: 76, 73
+  orig: 76, 73
+  offset: 0, 0
+  index: -1
+manosin3
+  rotate: false
+  xy: 355, 284
+  size: 120, 93
+  orig: 120, 93
+  offset: 0, 0
+  index: -1
+panza
+  rotate: false
+  xy: 208, 65
+  size: 205, 198
+  orig: 205, 198
+  offset: 0, 0
+  index: -1
+piededes
+  rotate: false
+  xy: 208, 9
+  size: 98, 54
+  orig: 98, 54
+  offset: 0, 0
+  index: -1
+piedesin
+  rotate: false
+  xy: 308, 9
+  size: 98, 54
+  orig: 98, 54
+  offset: 0, 0
+  index: -1
+piume
+  rotate: false
+  xy: 2, 265
+  size: 351, 242
+  orig: 351, 242
+  offset: 0, 0
+  index: -1
+polpdes
+  rotate: false
+  xy: 871, 367
+  size: 80, 140
+  orig: 80, 140
+  offset: 0, 0
+  index: -1
+polpsin
+  rotate: false
+  xy: 913, 225
+  size: 80, 140
+  orig: 80, 140
+  offset: 0, 0
+  index: -1
+testa
+  rotate: false
+  xy: 863, 15
+  size: 91, 136
+  orig: 91, 136
+  offset: 0, 0
+  index: -1
+testa2
+  rotate: false
+  xy: 758, 366
+  size: 111, 141
+  orig: 111, 141
+  offset: 0, 0
+  index: -1
+testa3
+  rotate: false
+  xy: 800, 153
+  size: 111, 141
+  orig: 111, 141
+  offset: 0, 0
+  index: -1
+testa4
+  rotate: false
+  xy: 415, 87
+  size: 94, 195
+  orig: 94, 195
+  offset: 0, 0
+  index: -1
+tronco1
+  rotate: false
+  xy: 2, 51
+  size: 204, 212
+  orig: 204, 212
+  offset: 0, 0
+  index: -1
